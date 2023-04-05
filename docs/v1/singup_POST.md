@@ -22,6 +22,8 @@
     "last_name_mothers": "Acosta",
     "account_number": "316259878",
     "careers": "Ingenieria en Computación",
+    "role": "admin",
+    "role_key": "sdasad4534junSD",
     "half_year": 4
 }
 
@@ -58,17 +60,19 @@
     &emsp; - Request
 </p>
 
-| Name              |         Description        |     Type |
-| ----------------- |:--------------------------:| --------:|
-| nick_name         |   NickName of User SingUp  |   String |
-| password          |    Password of New User    |   String |
-| email             |      Email of New User     |  *String |
-| name              |      Name of New User      |   String |
-| last_name_fathers |    Last Name of New User   |   String |
-| last_name_mothers |    Last Name of New User   |   String |
-| account_number    | Number Account of New User |   String |
-| careers           |     Careers of New User    |   String |
-| half_year         |      Half Year 1 to N      | *Integer |
+| Name              |             Description            |     Type |
+| ----------------- |:----------------------------------:| --------:|
+| nick_name         |       NickName of User SingUp      |   String |
+| password          |        Password of New User        |   String |
+| email             |          Email of New User         |  *String |
+| name              |          Name of New User          |   String |
+| last_name_fathers |        Last Name of New User       |   String |
+| last_name_mothers |        Last Name of New User       |   String |
+| account_number    |     Number Account of New User     |   String |
+| careers           |         Careers of New User        |   String |
+| half_year         |          Half Year 1 to N          | *Integer |
+| role              |          Role of New User          |   String |
+| role_key          | Key Valid by Create user with Role |   String |
 
 
 <p class="text_endpoint">
