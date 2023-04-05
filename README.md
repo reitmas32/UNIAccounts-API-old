@@ -1,2 +1,2 @@
 # UNICA-ManagerAccounts-API
-API for Manager Accounts for UNICA Systems
+API to Manage UNICA System Accounts
