@@ -53,10 +53,10 @@ This is a API to Manage Accounts<br><br>
 
 </style>
 
-## Create Acount *SinUp*
+## Create Acount *SingUp*
 
 <p class="v2-module__resource_url--lxU3z">
-    <span class="v2-module__resource_url_method--POST">POST</span> <code>https://unica-auacconts.com/api/v1/singup/</code>
+    <span class="v2-module__resource_url_method--POST">POST</span> <code>https://unica-accounts.com/api/v1/singup/</code>
 </p>
 
 <h2>
@@ -138,10 +138,10 @@ This is a API to Manage Accounts<br><br>
 
 ****
 
-## Detele Acount *SinUp*
+## Detele Acount *SingUp*
 
 <p class="v2-module__resource_url--lxU3z">
-    <span class="v2-module__resource_url_method--DELETE">DELETE</span> <code>https://unica-auacconts.com/api/v1/singup/</code>
+    <span class="v2-module__resource_url_method--DELETE">DELETE</span> <code>https://unica-accounts.com/api/v1/singup/</code>
 </p>
 
 <h2>
@@ -215,10 +215,10 @@ This is a API to Manage Accounts<br><br>
 ****
 
 
-## Login Acount *SinIn*
+## Login Acount *SingIn*
 
 <p class="v2-module__resource_url--lxU3z">
-    <span class="v2-module__resource_url_method--PUT">PUT</span> <code>https://unica-auacconts.com/api/v1/singin/</code>
+    <span class="v2-module__resource_url_method--PUT">PUT</span> <code>https://unica-accounts.com/api/v1/singin/</code>
 </p>
 
 <h2>
@@ -293,10 +293,10 @@ This is a API to Manage Accounts<br><br>
 
 ****
 
-## Check Acount *SinIn*
+## Check Acount *SingIn*
 
 <p class="v2-module__resource_url--lxU3z">
-    <span class="v2-module__resource_url_method--GET">GET</span> <code>https://unica-auacconts.com/api/v1/singin/</code>
+    <span class="v2-module__resource_url_method--GET">GET</span> <code>https://unica-accounts.com/api/v1/singin/</code>
 </p>
 
 <h2>
