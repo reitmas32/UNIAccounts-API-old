@@ -1,7 +1,7 @@
 ## Create Acount *SingUp*
 
 <p class="route_text">
-    <span class="method-GETPOST">POST</span> <code>https://unica-accounts.com/api/v1/singup/</code>
+    <span class="method-POST">POST</span> <code>https://unica-accounts.com/api/v1/singup/</code>
 </p>
 
 <h2>

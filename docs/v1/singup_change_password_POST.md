@@ -3,7 +3,7 @@
 Send a email to user mail for Change Password of Acount 
 
 <p class="route_text">
-    <span class="method-GETPOST">POST</span> <code>https://unica-accounts.com/api/v1/singup-change-password/</code>
+    <span class="method-POST">POST</span> <code>https://unica-accounts.com/api/v1/singup-change-password/</code>
 </p>
 
 <h2>

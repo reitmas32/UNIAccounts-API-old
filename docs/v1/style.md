@@ -11,7 +11,7 @@
     font-family: Monaco,Menlo,Consolas,Courier New,monospace;
 }
 
-.method-GETPOST {
+.method-POST {
     text-transform: uppercase;
     background-color: rgbA(102, 255, 153, 1.0);
     color: #000;
@@ -19,7 +19,7 @@
     padding: 4px 8px
 }
 
-.method-GETDELETE {
+.method-DELETE {
     text-transform: uppercase;
     background-color: red;
     color: #fff;
@@ -27,7 +27,7 @@
     padding: 4px 8px
 }
 
-.method-GETGET {
+.method-GET {
     text-transform: uppercase;
     background-color: rgba(0,116,236,1.0);
     color: #fff;
@@ -35,7 +35,7 @@
     padding: 4px 8px
 }
 
-.method-GETPUT {
+.method-PUT {
     text-transform: uppercase;
     background-color: rgbA(255, 204, 0, 1.0);
     color: #000;

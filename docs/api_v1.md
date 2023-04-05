@@ -18,7 +18,7 @@ This is a API to Manage Accounts<br><br>
     font-family: Monaco,Menlo,Consolas,Courier New,monospace;
 }
 
-.method-GETPOST {
+.method-POST {
     text-transform: uppercase;
     background-color: rgbA(102, 255, 153, 1.0);
     color: #000;
@@ -26,7 +26,7 @@ This is a API to Manage Accounts<br><br>
     padding: 4px 8px
 }
 
-.method-GETDELETE {
+.method-DELETE {
     text-transform: uppercase;
     background-color: red;
     color: #fff;
@@ -34,7 +34,7 @@ This is a API to Manage Accounts<br><br>
     padding: 4px 8px
 }
 
-.method-GETGET {
+.method-GET {
     text-transform: uppercase;
     background-color: rgba(0,116,236,1.0);
     color: #fff;
@@ -42,7 +42,7 @@ This is a API to Manage Accounts<br><br>
     padding: 4px 8px
 }
 
-.method-GETPUT {
+.method-PUT {
     text-transform: uppercase;
     background-color: rgbA(255, 204, 0, 1.0);
     color: #000;
@@ -54,7 +54,7 @@ This is a API to Manage Accounts<br><br>
 ## Create Acount *SingUp*
 
 <p class="route_text">
-    <span class="method-GETPOST">POST</span> <code>https://unica-accounts.com/api/v1/singup/</code>
+    <span class="method-POST">POST</span> <code>https://unica-accounts.com/api/v1/singup/</code>
 </p>
 
 <h2>
@@ -136,7 +136,7 @@ This is a API to Manage Accounts<br><br>
 ## Detele Acount *SingUp*
 
 <p class="route_text">
-    <span class="method-GETDELETE">DELETE</span> <code>https://unica-accounts.com/api/v1/singup/</code>
+    <span class="method-DELETE">DELETE</span> <code>https://unica-accounts.com/api/v1/singup/</code>
 </p>
 
 <h2>
@@ -210,7 +210,7 @@ This is a API to Manage Accounts<br><br>
 ## Login Acount *SingIn*
 
 <p class="route_text">
-    <span class="method-GETPUT">PUT</span> <code>https://unica-accounts.com/api/v1/singin/</code>
+    <span class="method-PUT">PUT</span> <code>https://unica-accounts.com/api/v1/singin/</code>
 </p>
 
 <h2>
@@ -285,7 +285,7 @@ This is a API to Manage Accounts<br><br>
 ## Check Acount *SingIn*
 
 <p class="route_text">
-    <span class="method-GETGET">GET</span> <code>https://unica-accounts.com/api/v1/singin/</code>
+    <span class="method-GET">GET</span> <code>https://unica-accounts.com/api/v1/singin/</code>
 </p>
 
 <h2>
@@ -365,7 +365,7 @@ This is a API to Manage Accounts<br><br>
 Send a email to user mail for Change Password of Acount 
 
 <p class="route_text">
-    <span class="method-GETPOST">POST</span> <code>https://unica-accounts.com/api/v1/singup-change-password/</code>
+    <span class="method-POST">POST</span> <code>https://unica-accounts.com/api/v1/singup-change-password/</code>
 </p>
 
 <h2>
@@ -434,7 +434,7 @@ Send a email to user mail for Change Password of Acount
 Send a email to user mail for Change Password of Acount 
 
 <p class="route_text">
-    <span class="method-GETPUT">PUT</span> <code>https://unica-accounts.com/api/v1/singup-change-password/</code>
+    <span class="method-PUT">PUT</span> <code>https://unica-accounts.com/api/v1/singup-change-password/</code>
 </p>
 
 <h2>

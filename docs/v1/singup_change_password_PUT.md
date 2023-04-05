@@ -3,7 +3,7 @@
 Change Password of Acount 
 
 <p class="route_text">
-    <span class="method-GETPUT">PUT</span> <code>https://unica-accounts.com/api/v1/singup-change-password/</code>
+    <span class="method-PUT">PUT</span> <code>https://unica-accounts.com/api/v1/singup-change-password/</code>
 </p>
 
 <h2>

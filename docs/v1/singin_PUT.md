@@ -1,7 +1,7 @@
 ## Login Acount *SingIn*
 
 <p class="route_text">
-    <span class="method-GETPUT">PUT</span> <code>https://unica-accounts.com/api/v1/singin/</code>
+    <span class="method-PUT">PUT</span> <code>https://unica-accounts.com/api/v1/singin/</code>
 </p>
 
 <h2>
