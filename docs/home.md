@@ -56,7 +56,7 @@ This is a API to Manage Accounts<br><br>
 ## Create Acount *SinUp*
 
 <p class="v2-module__resource_url--lxU3z">
-    <span class="v2-module__resource_url_method--POST">post</span> <code>https://unica-auacconts.com/api/v1/singup/</code>
+    <span class="v2-module__resource_url_method--POST">POST</span> <code>https://unica-auacconts.com/api/v1/singup/</code>
 </p>
 
 <h2>
@@ -124,7 +124,6 @@ This is a API to Manage Accounts<br><br>
 | account_number    | Number Account of New User |   String |
 | careers           |     Careers of New User    |   String |
 | half_year         |      Half Year 1 to N      | *Integer |
-|                   |                            |          |
 
 
 <p class="text_endpoint">
@@ -136,16 +135,13 @@ This is a API to Manage Accounts<br><br>
 | message     | Message of Response |  String |
 | status_code |   Status Code HTTP  | Integer |
 | jwt         |    JSON Web Token   |  String |
-|             |                     |         |
-|             |                     |         |
 
-****
 ****
 
 ## Detele Acount *SinUp*
 
 <p class="v2-module__resource_url--lxU3z">
-    <span class="v2-module__resource_url_method--DELETE">delete</span> <code>https://unica-auacconts.com/api/v1/singup/</code>
+    <span class="v2-module__resource_url_method--DELETE">DELETE</span> <code>https://unica-auacconts.com/api/v1/singup/</code>
 </p>
 
 <h2>
@@ -206,7 +202,6 @@ This is a API to Manage Accounts<br><br>
 | password       |    Password of New User    |  String |
 | email          |      Email of New User     | *String |
 | account_number | Number Account of New User | *String |
-|                |                            |         |
 
 
 <p class="text_endpoint">
@@ -217,16 +212,13 @@ This is a API to Manage Accounts<br><br>
 | ----------- |:-------------------:| -------:|
 | message     | Message of Response |  String |
 | status_code |   Status Code HTTP  | Integer |
-|             |                     |         |
-|             |                     |         |
-****
 ****
 
 
 ## Login Acount *SinIn*
 
 <p class="v2-module__resource_url--lxU3z">
-    <span class="v2-module__resource_url_method--PUT">put</span> <code>https://unica-auacconts.com/api/v1/singin/</code>
+    <span class="v2-module__resource_url_method--PUT">PUT</span> <code>https://unica-auacconts.com/api/v1/singin/</code>
 </p>
 
 <h2>
@@ -288,7 +280,6 @@ This is a API to Manage Accounts<br><br>
 | password       |    Password of New User    |  String |
 | email          |      Email of New User     | *String |
 | account_number | Number Account of New User | *String |
-|                |                            |         |
 
 <p class="text_endpoint">
     &emsp; - Response
@@ -299,16 +290,13 @@ This is a API to Manage Accounts<br><br>
 | message     | Message of Response |  String |
 | status_code |   Status Code HTTP  | Integer |
 | jwt         |    JSON Web Token   |  String |
-|             |                     |         |
-|             |                     |         |
 
-****
 ****
 
 ## Check Acount *SinIn*
 
 <p class="v2-module__resource_url--lxU3z">
-    <span class="v2-module__resource_url_method--GET">get</span> <code>https://unica-auacconts.com/api/v1/singin/</code>
+    <span class="v2-module__resource_url_method--GET">GET</span> <code>https://unica-auacconts.com/api/v1/singin/</code>
 </p>
 
 <h2>
@@ -374,7 +362,6 @@ This is a API to Manage Accounts<br><br>
 | --------- |:--------------------:| ------:|
 | nick_name |   NickName of User   | String |
 | jwt       | Password of New User | String |
-|           |                      |        |
 <p class="text_endpoint">
     &emsp; - Response
 </p>
@@ -384,7 +371,4 @@ This is a API to Manage Accounts<br><br>
 | message      | Message of Response |  String |
 | status_code  |   Status Code HTTP  | Integer |
 | status_sinin | Status Code Session |    Bool |
-|              |                     |         |
-|              |                     |         |
-****
 ****
