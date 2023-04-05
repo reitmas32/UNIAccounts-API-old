@@ -2,8 +2,8 @@
 
 Send a email to user mail for Change Password of Acount 
 
-<p class="v2-module__resource_url--lxU3z">
-    <span class="v2-module__resource_url_method--POST">POST</span> <code>https://unica-accounts.com/api/v1/singup-change-password/</code>
+<p class="route_text">
+    <span class="method-GETPOST">POST</span> <code>https://unica-accounts.com/api/v1/singup-change-password/</code>
 </p>
 
 <h2>

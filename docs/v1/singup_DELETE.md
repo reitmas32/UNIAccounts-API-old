@@ -1,7 +1,7 @@
 ## Detele Acount *SingUp*
 
-<p class="v2-module__resource_url--lxU3z">
-    <span class="v2-module__resource_url_method--DELETE">DELETE</span> <code>https://unica-accounts.com/api/v1/singup/</code>
+<p class="route_text">
+    <span class="method-GETDELETE">DELETE</span> <code>https://unica-accounts.com/api/v1/singup/</code>
 </p>
 
 <h2>

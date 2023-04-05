@@ -1,5 +1,5 @@
 <style>
-.v2-module__resource_url--lxU3z {
+.route_text {
     font-size: 1.4em;
     margin: .25em 0;
     font-family: Monaco,Menlo,Consolas,Courier New,monospace;
@@ -11,7 +11,7 @@
     font-family: Monaco,Menlo,Consolas,Courier New,monospace;
 }
 
-.v2-module__resource_url_method--POST {
+.method-GETPOST {
     text-transform: uppercase;
     background-color: rgbA(102, 255, 153, 1.0);
     color: #000;
@@ -19,7 +19,7 @@
     padding: 4px 8px
 }
 
-.v2-module__resource_url_method--DELETE {
+.method-GETDELETE {
     text-transform: uppercase;
     background-color: red;
     color: #fff;
@@ -27,7 +27,7 @@
     padding: 4px 8px
 }
 
-.v2-module__resource_url_method--GET {
+.method-GETGET {
     text-transform: uppercase;
     background-color: rgba(0,116,236,1.0);
     color: #fff;
@@ -35,7 +35,7 @@
     padding: 4px 8px
 }
 
-.v2-module__resource_url_method--PUT {
+.method-GETPUT {
     text-transform: uppercase;
     background-color: rgbA(255, 204, 0, 1.0);
     color: #000;

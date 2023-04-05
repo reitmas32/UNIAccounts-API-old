@@ -7,7 +7,7 @@ This is a API to Manage Accounts<br><br>
 ## **EndPoints** <br><br>
 
 <style>
-.v2-module__resource_url--lxU3z {
+.route_text {
     font-size: 1.4em;
     margin: .25em 0;
     font-family: Monaco,Menlo,Consolas,Courier New,monospace;
@@ -19,7 +19,7 @@ This is a API to Manage Accounts<br><br>
     font-family: Monaco,Menlo,Consolas,Courier New,monospace;
 }
 
-.v2-module__resource_url_method--POST {
+.method-GETPOST {
     text-transform: uppercase;
     background-color: rgbA(102, 255, 153, 1.0);
     color: #000;
@@ -27,7 +27,7 @@ This is a API to Manage Accounts<br><br>
     padding: 4px 8px
 }
 
-.v2-module__resource_url_method--DELETE {
+.method-GETDELETE {
     text-transform: uppercase;
     background-color: red;
     color: #fff;
@@ -35,7 +35,7 @@ This is a API to Manage Accounts<br><br>
     padding: 4px 8px
 }
 
-.v2-module__resource_url_method--GET {
+.method-GETGET {
     text-transform: uppercase;
     background-color: rgba(0,116,236,1.0);
     color: #fff;
@@ -43,7 +43,7 @@ This is a API to Manage Accounts<br><br>
     padding: 4px 8px
 }
 
-.v2-module__resource_url_method--PUT {
+.method-GETPUT {
     text-transform: uppercase;
     background-color: rgbA(255, 204, 0, 1.0);
     color: #000;
@@ -55,8 +55,8 @@ This is a API to Manage Accounts<br><br>
 
 ## Create Acount *SingUp*
 
-<p class="v2-module__resource_url--lxU3z">
-    <span class="v2-module__resource_url_method--POST">POST</span> <code>https://unica-accounts.com/api/v1/singup/</code>
+<p class="route_text">
+    <span class="method-GETPOST">POST</span> <code>https://unica-accounts.com/api/v1/singup/</code>
 </p>
 
 <h2>
@@ -140,8 +140,8 @@ This is a API to Manage Accounts<br><br>
 
 ## Detele Acount *SingUp*
 
-<p class="v2-module__resource_url--lxU3z">
-    <span class="v2-module__resource_url_method--DELETE">DELETE</span> <code>https://unica-accounts.com/api/v1/singup/</code>
+<p class="route_text">
+    <span class="method-GETDELETE">DELETE</span> <code>https://unica-accounts.com/api/v1/singup/</code>
 </p>
 
 <h2>
@@ -217,8 +217,8 @@ This is a API to Manage Accounts<br><br>
 
 ## Login Acount *SingIn*
 
-<p class="v2-module__resource_url--lxU3z">
-    <span class="v2-module__resource_url_method--PUT">PUT</span> <code>https://unica-accounts.com/api/v1/singin/</code>
+<p class="route_text">
+    <span class="method-GETPUT">PUT</span> <code>https://unica-accounts.com/api/v1/singin/</code>
 </p>
 
 <h2>
@@ -295,8 +295,8 @@ This is a API to Manage Accounts<br><br>
 
 ## Check Acount *SingIn*
 
-<p class="v2-module__resource_url--lxU3z">
-    <span class="v2-module__resource_url_method--GET">GET</span> <code>https://unica-accounts.com/api/v1/singin/</code>
+<p class="route_text">
+    <span class="method-GETGET">GET</span> <code>https://unica-accounts.com/api/v1/singin/</code>
 </p>
 
 <h2>

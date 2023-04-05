@@ -1,7 +1,7 @@
 ## Check Acount *SingIn*
 
-<p class="v2-module__resource_url--lxU3z">
-    <span class="v2-module__resource_url_method--GET">GET</span> <code>https://unica-accounts.com/api/v1/singin/</code>
+<p class="route_text">
+    <span class="method-GETGET">GET</span> <code>https://unica-accounts.com/api/v1/singin/</code>
 </p>
 
 <h2>

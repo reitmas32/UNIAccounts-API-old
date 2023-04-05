@@ -1,7 +1,7 @@
 ## Login Acount *SingIn*
 
-<p class="v2-module__resource_url--lxU3z">
-    <span class="v2-module__resource_url_method--PUT">PUT</span> <code>https://unica-accounts.com/api/v1/singin/</code>
+<p class="route_text">
+    <span class="method-GETPUT">PUT</span> <code>https://unica-accounts.com/api/v1/singin/</code>
 </p>
 
 <h2>

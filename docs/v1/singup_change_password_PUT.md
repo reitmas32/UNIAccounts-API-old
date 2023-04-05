@@ -2,8 +2,8 @@
 
 Change Password of Acount 
 
-<p class="v2-module__resource_url--lxU3z">
-    <span class="v2-module__resource_url_method--PUT">PUT</span> <code>https://unica-accounts.com/api/v1/singup-change-password/</code>
+<p class="route_text">
+    <span class="method-GETPUT">PUT</span> <code>https://unica-accounts.com/api/v1/singup-change-password/</code>
 </p>
 
 <h2>
