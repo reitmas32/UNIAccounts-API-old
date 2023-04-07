@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Vars of Environment
+src/ENVS.sh
+
 # C extensions
 *.so
 
