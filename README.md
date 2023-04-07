@@ -28,5 +28,9 @@ pip3 install -r requirements.txt
 ### **Run Server App**
 
 ```bash
+# Debug Mode
+flask --app src/app --debug run
+
+#Release Mode
 flask --app src/app run
 ```
