@@ -4,7 +4,11 @@
 
 This is a API to Manage Accounts<br><br>
 ****
+## **API Keys**
+To consume the API, an API_KEY provided by us is necessary for each of the services, this must be sent in the Headers of each of the requests.
+
 ## **EndPoints** <br><br>
+
 <style>
 .route_text {
     font-size: 1.4em;
@@ -75,6 +79,8 @@ This is a API to Manage Accounts<br><br>
     "last_name_mothers": "Acosta",
     "account_number": "316259878",
     "careers": "Ingenieria en Computación",
+    "role": "admin",
+    "role_key": "sdasad4534junSD",
     "half_year": 4
 }
 
@@ -111,17 +117,18 @@ This is a API to Manage Accounts<br><br>
     &emsp; - Request
 </p>
 
-| Name              |         Description        |     Type |
-| ----------------- |:--------------------------:| --------:|
-| nick_name         |   NickName of User SingUp  |   String |
-| password          |    Password of New User    |   String |
-| email             |      Email of New User     |  *String |
-| name              |      Name of New User      |   String |
-| last_name_fathers |    Last Name of New User   |   String |
-| last_name_mothers |    Last Name of New User   |   String |
-| account_number    | Number Account of New User |   String |
-| careers           |     Careers of New User    |   String |
-| half_year         |      Half Year 1 to N      | *Integer |
+| Name              |             Description            |     Type |
+| ----------------- |:----------------------------------:| --------:|
+| nick_name         |       NickName of User SingUp      |   String |
+| password          |        Password of New User        |   String |
+| email             |          Email of New User         |  *String |
+| name              |          Name of New User          |   String |
+| last_name_fathers |        Last Name of New User       |   String |
+| last_name_mothers |        Last Name of New User       |   String |
+| account_number    |     Number Account of New User     |   String |
+| careers           |         Careers of New User        |   String |
+| half_year         |          Half Year 1 to N          | *Integer |
+| role              |          Role of New User          |   String |
 
 
 <p class="text_endpoint">
@@ -132,7 +139,6 @@ This is a API to Manage Accounts<br><br>
 | ----------- |:-------------------:| -------:|
 | message     | Message of Response |  String |
 | status_code |   Status Code HTTP  | Integer |
-| jwt         |    JSON Web Token   |  String |
 ## Detele Acount *SingUp*
 
 <p class="route_text">
@@ -431,7 +437,7 @@ Send a email to user mail for Change Password of Acount
 | status_code |   Status Code HTTP  | Integer |
 ## Request Change Password of Acount *SingUp*
 
-Send a email to user mail for Change Password of Acount 
+Change Password of Acount 
 
 <p class="route_text">
     <span class="method-PUT">PUT</span> <code>https://unica-accounts.com/api/v1/singup-change-password/</code>

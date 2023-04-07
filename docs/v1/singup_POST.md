@@ -72,7 +72,6 @@
 | careers           |         Careers of New User        |   String |
 | half_year         |          Half Year 1 to N          | *Integer |
 | role              |          Role of New User          |   String |
-| role_key          | Key Valid by Create user with Role |   String |
 
 
 <p class="text_endpoint">
@@ -83,4 +82,3 @@
 | ----------- |:-------------------:| -------:|
 | message     | Message of Response |  String |
 | status_code |   Status Code HTTP  | Integer |
-| jwt         |    JSON Web Token   |  String |
