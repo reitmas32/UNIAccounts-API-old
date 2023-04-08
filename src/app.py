@@ -39,14 +39,14 @@ def singup():
     
     return response, status_code
 
-@app.route('/api/v1/singin', methods=['PUT'])
+@app.route('/api/v1/singin', methods=['PUT', 'GET'])
 def singin():
     status, service_name = CONFIG.valid_API_KEY(request.headers.get('API_KEY'))
     
     response = 'Nada'
     status_code = 404
     
-    if not request.is_json:
+    if not request.is_json and request.method != 'GET':
         return 'No content Type'
     if not status:
         return 'No API_KEY Valid', 401
@@ -56,6 +56,10 @@ def singin():
         
     if request.method == 'PUT':
         response, status_code = singin_route_PUT(request.json, data_base_service)
+    
+    if request.method == 'GET':
+        response = singin_route_GET(request.headers['Authorization'].split(" ")[1], data_base_service)
+        status_code = response.get('status_code')
     
     return response, status_code
 
