@@ -34,3 +34,13 @@ flask --app src/app --debug run
 #Release Mode
 flask --app src/app run
 ```
+
+### **Run Server With Docker**
+
+```bash
+# Build Image
+docker build -t unica-acounts-api .
+
+#Run Image
+docker run -it -p 7000:4000 unica-acounts-api
+```
