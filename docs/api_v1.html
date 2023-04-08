@@ -772,11 +772,8 @@ code {
 <p class="text_endpoint">
     &emsp; - Request
 </p>
-<pre class="hljs"><code><div>{
-    <span class="hljs-attr">"nick_name"</span>: <span class="hljs-string">"UserExample"</span>,
-    <span class="hljs-attr">"jwt"</span>: <span class="hljs-string">"juasdhasdaj548456ad3ad64*"</span>,
-}
-
+<pre class="hljs"><code><div>AUTH
+TOKEN: <span class="hljs-string">'sklndansd548488a4dajndbkabdbasd'</span>
 </div></code></pre>
 <p><strong>Notes:</strong><br></p>
 <ul>
@@ -787,16 +784,14 @@ code {
     &emsp; - Response 200 OK
 </p>
 <pre class="hljs"><code><div>{
-    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Succesfull Check Sesion"</span>,
-    <span class="hljs-attr">"status_code"</span>: <span class="hljs-number">200</span>,
-    <span class="hljs-attr">"status_sinin"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Valid Token"</span>,
+    <span class="hljs-attr">"status_code"</span>: <span class="hljs-number">200</span>
 }
 
 </div></code></pre>
 <pre class="hljs"><code><div>{
-    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Succesfull Check Sesion"</span>,
-    <span class="hljs-attr">"status_code"</span>: <span class="hljs-number">200</span>,
-    <span class="hljs-attr">"status_sinin"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Token Expired"</span>,
+    <span class="hljs-attr">"status_code"</span>: <span class="hljs-number">200</span>
 }
 
 </div></code></pre>
@@ -804,8 +799,8 @@ code {
     &emsp; - Response 500 ERROR
 </p>
 <pre class="hljs"><code><div>{
-    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Error SingIn"</span>,
-    <span class="hljs-attr">"status_code"</span>: <span class="hljs-number">500</span>
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Invalid Token"</span>,
+    <span class="hljs-attr">"status_code"</span>: <span class="hljs-number">401</span>
 }
 
 </div></code></pre>
@@ -825,12 +820,7 @@ code {
 </thead>
 <tbody>
 <tr>
-<td>nick_name</td>
-<td style="text-align:center">NickName of User</td>
-<td style="text-align:right">String</td>
-</tr>
-<tr>
-<td>jwt</td>
+<td>TOKEN</td>
 <td style="text-align:center">Password of New User</td>
 <td style="text-align:right">String</td>
 </tr>
@@ -857,11 +847,6 @@ code {
 <td>status_code</td>
 <td style="text-align:center">Status Code HTTP</td>
 <td style="text-align:right">Integer</td>
-</tr>
-<tr>
-<td>status_sinin</td>
-<td style="text-align:center">Status Code Session</td>
-<td style="text-align:right">Bool</td>
 </tr>
 </tbody>
 </table>

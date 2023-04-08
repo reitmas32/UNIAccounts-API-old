@@ -302,12 +302,9 @@ To consume the API, an API_KEY provided by us is necessary for each of the servi
     &emsp; - Request
 </p>
 
-```json
-{
-    "nick_name": "UserExample",
-    "jwt": "juasdhasdaj548456ad3ad64*",
-}
-
+```bash
+AUTH
+TOKEN: 'sklndansd548488a4dajndbkabdbasd'
 ```
 **Notes:**<br>
 - For Check Authentication is necessary ``jwt``
@@ -319,17 +316,15 @@ To consume the API, an API_KEY provided by us is necessary for each of the servi
 
 ```json
 {
-    "message": "Succesfull Check Sesion",
-    "status_code": 200,
-    "status_sinin": true,
+    "message": "Valid Token",
+    "status_code": 200
 }
 
 ```
 ```json
 {
-    "message": "Succesfull Check Sesion",
-    "status_code": 200,
-    "status_sinin": false,
+    "message": "Token Expired",
+    "status_code": 200
 }
 
 ```
@@ -340,8 +335,8 @@ To consume the API, an API_KEY provided by us is necessary for each of the servi
 
 ```json
 {
-    "message": "Error SingIn",
-    "status_code": 500
+    "message": "Invalid Token",
+    "status_code": 401
 }
 
 ```
@@ -353,10 +348,9 @@ To consume the API, an API_KEY provided by us is necessary for each of the servi
     &emsp; - Request
 </p>
 
-| Name      |      Description     |   Type |
-| --------- |:--------------------:| ------:|
-| nick_name |   NickName of User   | String |
-| jwt       | Password of New User | String |
+| Name  |      Description     |   Type |
+| ----- |:--------------------:| ------:|
+| TOKEN | Password of New User | String |
 <p class="text_endpoint">
     &emsp; - Response
 </p>
@@ -365,7 +359,6 @@ To consume the API, an API_KEY provided by us is necessary for each of the servi
 | ------------ |:-------------------:| -------:|
 | message      | Message of Response |  String |
 | status_code  |   Status Code HTTP  | Integer |
-| status_sinin | Status Code Session |    Bool |
 ## Request Change Password of Acount *SingUp*
 
 Send a email to user mail for Change Password of Acount 
