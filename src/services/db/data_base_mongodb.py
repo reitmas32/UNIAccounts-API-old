@@ -7,6 +7,7 @@ from flask_pymongo import PyMongo
 class DataBase_MongoDB(IDataBase):
     _data_base = None
     def __init__(self, app):
+        app.config["MONGO_URI"] = "mongodb://localhost/test_db"
         self._data_base = PyMongo(app)
     
     def create_user(self, user: User):
