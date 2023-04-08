@@ -34,3 +34,23 @@ flask --app src/app --debug run
 #Release Mode
 flask --app src/app run
 ```
+
+### **Run Server With Docker**
+
+```bash
+# Build Image
+docker build -t unica-acounts-api .
+
+#Run Image
+docker run -it -p 7000:4000 unica-acounts-api
+```
+
+### **Endpoints Dev Status**
+| Method |             Endpoint            | Status |
+| ------ |:-------------------------------:| ------:|
+| POST   |         /api/v1/singup/         |      ✓ |
+| DELETE |         /api/v1/singup/         |      × |
+| PUT    |         /api/v1/singin/         |      ✓ |
+| GET    |         /api/v1/singin/         |      ✓ |
+| POST   | /api/v1/singup-change-password/ |      × |
+| PUT    | /api/v1/singup-change-password/ |      × |

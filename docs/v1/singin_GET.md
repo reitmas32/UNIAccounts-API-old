@@ -12,12 +12,9 @@
     &emsp; - Request
 </p>
 
-```json
-{
-    "nick_name": "UserExample",
-    "jwt": "juasdhasdaj548456ad3ad64*",
-}
-
+```bash
+AUTH
+TOKEN: 'sklndansd548488a4dajndbkabdbasd'
 ```
 **Notes:**<br>
 - For Check Authentication is necessary ``jwt``
@@ -29,17 +26,15 @@
 
 ```json
 {
-    "message": "Succesfull Check Sesion",
-    "status_code": 200,
-    "status_sinin": true,
+    "message": "Valid Token",
+    "status_code": 200
 }
 
 ```
 ```json
 {
-    "message": "Succesfull Check Sesion",
-    "status_code": 200,
-    "status_sinin": false,
+    "message": "Token Expired",
+    "status_code": 200
 }
 
 ```
@@ -50,8 +45,8 @@
 
 ```json
 {
-    "message": "Error SingIn",
-    "status_code": 500
+    "message": "Invalid Token",
+    "status_code": 401
 }
 
 ```
@@ -63,10 +58,9 @@
     &emsp; - Request
 </p>
 
-| Name      |      Description     |   Type |
-| --------- |:--------------------:| ------:|
-| nick_name |   NickName of User   | String |
-| jwt       | Password of New User | String |
+| Name  |      Description     |   Type |
+| ----- |:--------------------:| ------:|
+| TOKEN | Password of New User | String |
 <p class="text_endpoint">
     &emsp; - Response
 </p>
@@ -75,4 +69,3 @@
 | ------------ |:-------------------:| -------:|
 | message      | Message of Response |  String |
 | status_code  |   Status Code HTTP  | Integer |
-| status_sinin | Status Code Session |    Bool |

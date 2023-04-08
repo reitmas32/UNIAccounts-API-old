@@ -1,7 +1,7 @@
 API_VERSION = 'v1'
 
 SERVICE_PERMISSIONS = {
-    'UNICA_STORE': ['singup_route_POST']
+    'UNICA_STORE': ['singup_route_POST', 'singin_route_PUT', 'singin_route_GET']
 }
 
 import ENVS
