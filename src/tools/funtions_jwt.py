@@ -19,16 +19,12 @@ def write_token(data: dict):
     return token.encode("UTF-8")
 
 
-def validate_token(token, output=False):
+def validate_token(token):
     try:
-        if output:
-            return decode(token, key=ENVS.SECRET_KEY_TOKEN, algorithms=["HS256"])
-        decode(token, key=ENVS.SECRET_KEY_TOKEN, algorithms=["HS256"])
+        return {"message": "Valid Token", "status": decode(token, key=ENVS.SECRET_KEY_TOKEN, algorithms=["HS256"])}
     except exceptions.DecodeError:
-        response = jsonify({"message": "Invalid Token"})
-        response.status_code = 401
+        response = {"message": "Invalid Token"}
         return response
     except exceptions.ExpiredSignatureError:
-        response = jsonify({"message": "Token Expired"})
-        response.status_code = 401
+        response = {"message": "Token Expired"}
         return response
