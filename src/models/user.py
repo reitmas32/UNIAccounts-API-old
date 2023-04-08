@@ -13,7 +13,7 @@ class User:
     role = '' 
     role_key= '' 
     half_year = 0
-    def __init__(self,nick_name,password,email,name ,last_name_fathers ,last_name_mothers,account_number,careers,role ,role_key,half_year):
+    def __init__(self,nick_name='',password='',email='',name ='',last_name_fathers ='',last_name_mothers='',account_number='',careers='',role ='',role_key='',half_year =''):
                 self.nick_name = nick_name
                 self.password = password
                 self.email = email
@@ -25,6 +25,23 @@ class User:
                 self.role  = role 
                 self.role_key = role_key
                 self.half_year = half_year
+                
+    @staticmethod
+    def from_dict_password_nohash(obj: dict):
+        
+        if obj.get('account_number') != None or obj.get('nick_name') != None or obj.get('email') != None:
+            pass
+        else:
+            return None, 'No account_number, nick_name, or email send in the request', 428
+        if obj.get('password') == None:
+            return None, 'No password send in the request', 428
+        # Auth
+        nick_name           = str(obj.get("nick_name"))
+        password            = str(obj.get("password"))
+        account_number      = str(obj.get("account_number"))
+        email               = str(obj.get("email"))
+
+        return User(nick_name=nick_name,password=password,email=email,account_number=account_number), 'Succesful User', 200
                 
     @staticmethod
     def from_dict(obj: dict):
@@ -40,7 +57,6 @@ class User:
         # Auth
         nick_name           = str(obj.get("nick_name"))
         password            = generate_password_hash(str(obj.get("password")))
-        
         # Email
         email               = str(obj.get("email"))
         
