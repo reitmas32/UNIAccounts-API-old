@@ -1,4 +1,4 @@
-from tools.funtions_jwt import write_token
+from tools.funtions_jwt import write_token, validate_token
 from models.user import User
 from services.db.idata_base import IDataBase
 from flask_pymongo import PyMongo
@@ -36,8 +36,19 @@ class DataBase_MongoDB(IDataBase):
             return {'message':'Error no User Exist', 'status_code' :403}
         
         if check_password_hash(request_mongodb.get("password"), user.password) == True:
+            user.password = ''
             user_jwt = write_token(data=user.__dict__())
         else:
             return {'message':'Password Invalid', 'status_code' :403}
         return {'message':'Succesfull SingIn', 'status_code' :200, 'jwt': str(user_jwt, encoding='UTF-8')}
+    
+    def check_token_user(self, token_authorization):
+        response_valid_token = validate_token(token=token_authorization)
+        response = {}
+        if response_valid_token.get('status'):
+            response = {'message': response_valid_token.get('message'), 'status_code': 200}
+        else:
+            response = {'message': response_valid_token.get('message'), 'status_code': 401}
+            
+        return response
         
