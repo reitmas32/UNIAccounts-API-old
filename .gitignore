@@ -5,6 +5,7 @@ __pycache__/
 
 # Vars of Environment
 src/ENVS.py
+DB/
 
 # C extensions
 *.so
