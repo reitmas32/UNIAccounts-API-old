@@ -35,6 +35,12 @@ flask --app src/app --debug run
 flask --app src/app run
 ```
 
+### **Run Local DataBase With Docker**
+```bash
+# Run and Build Image with volumes
+docker run -d -p 27017:27017 -v $ABS_ROUTE_OF_PROJECT/UNICA-ManagerAccounts-API/DB:/data/db --name database mongo
+```
+
 ### **Run Server With Docker**
 
 ```bash
