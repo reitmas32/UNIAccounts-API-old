@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
 
@@ -12,7 +12,7 @@ from routes.singin_route import *
 
 @app.route('/', methods=['GET'])
 def index():
-    api_docs = open(f"docs/api_{CONFIG.API_VERSION}.html", "r")
+    api_docs = open(f"api_{CONFIG.API_VERSION}.html", "r")
     return api_docs.read()
 
 @app.route('/test', methods=['GET'])
@@ -62,6 +62,29 @@ def singin():
         status_code = response.get('status_code')
     
     return response, status_code
+
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup_users():
+    if request.method == 'POST':
+        # Obtener los datos del formulario de registro
+        username = request.form['username']
+        password = request.form['password']
+        email = request.form['email']
+        
+        print('Nuevo Usuario')
+
+        # Validar los datos del formulario de registro
+        # (Aquí puedes agregar tu lógica de validación, por ejemplo, consultar una base de datos para verificar si el usuario ya existe)
+
+        # Si los datos son válidos, se realiza el registro
+        # (Aquí puedes agregar tu lógica de registro, por ejemplo, agregar el usuario a una base de datos)
+
+        # Retornar la respuesta adecuada
+        return jsonify({'message': 'Registro exitoso. ¡Bienvenido a nuestra aplicación!'})
+    else:
+        # Mostrar el formulario de registro
+        return render_template('signup.html')
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=4000, debug=True)
