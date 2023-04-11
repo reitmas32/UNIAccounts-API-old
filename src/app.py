@@ -1,3 +1,5 @@
+import requests
+
 from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
@@ -7,6 +9,7 @@ from services.db.data_base_mongodb import DataBase_MongoDB
 data_base_service = DataBase_MongoDB(app)
 
 import config as CONFIG
+import ENVS
 from routes.signup_route import *
 from routes.signin_route import *
 
@@ -65,25 +68,40 @@ def signin():
     
     return response, status_code
 
-
 @app.route('/signup', methods=['GET', 'POST'])
 def signup_users():
     if request.method == 'POST':
         # Obtener los datos del formulario de registro
-        username = request.form['username']
-        password = request.form['password']
-        email = request.form['email']
+        nick_name  = request.form['nick_name']
+        password  = request.form['password']
+        email  = request.form['email']
+        name   = request.form['name']
+        last_name_fathers   = request.form['last_name_fathers']
+        last_name_mothers  = request.form['last_name_mothers']
+        account_number  = request.form['account_number']
+        careers  = request.form['careers']
+        role   = request.form['role']
+        role_key  = request.form['role_key']
+        half_year = request.form['half_year']
         
-        print('Nuevo Usuario')
-
-        # Validar los datos del formulario de registro
-        # (Aquí puedes agregar tu lógica de validación, por ejemplo, consultar una base de datos para verificar si el usuario ya existe)
-
-        # Si los datos son válidos, se realiza el registro
-        # (Aquí puedes agregar tu lógica de registro, por ejemplo, agregar el usuario a una base de datos)
-
+        query = {
+            'nick_name'         : nick_name,
+            'password'          : password,
+            'email'             : email,
+            'name'              : name,
+            'last_name_fathers' : last_name_fathers,
+            'last_name_mothers' : last_name_mothers,
+            'account_number'    : account_number,
+            'careers'           : careers,
+            'half_year'         : half_year,
+            'role'              : role,
+            'role_key'          : role_key,
+        }
+        
+        response = requests.post('http://127.0.0.1:4000/api/v1/signup',json=query, headers={'API_KEY': ENVS.API_KEYS.get('UNICA_MANAGER_ACCOUNTS_API')} )
+        
         # Retornar la respuesta adecuada
-        return jsonify({'message': 'Registro exitoso. ¡Bienvenido a nuestra aplicación!'})
+        return response.text
     else:
         # Mostrar el formulario de registro
         return render_template('signup.html')
