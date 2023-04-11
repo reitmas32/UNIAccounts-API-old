@@ -12,5 +12,5 @@ services:
       - "27017:27017"
     volumes:
           - ./DB:/data/db
-    container_name: new_cs_mongodb
-    hostname: new_cs_mongodb
+    container_name: mongo_db_unica
+    hostname: mongo_db_unica
