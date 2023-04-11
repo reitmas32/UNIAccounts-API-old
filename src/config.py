@@ -1,7 +1,8 @@
 API_VERSION = 'v1'
 
 SERVICE_PERMISSIONS = {
-    'UNICA_STORE': ['signup_route_POST', 'signin_route_PUT', 'signin_route_GET']
+    'UNICA_STORE': ['signup_route_POST', 'signin_route_PUT', 'signin_route_GET'],
+    'UNICA_MANAGER_ACCOUNTS_API': ['signup_route_POST', 'signin_route_PUT', 'signin_route_GET']
 }
 
 import ENVS
