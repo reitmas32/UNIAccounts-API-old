@@ -1,9 +1,9 @@
-## Request Change Password of Acount *SingUp*
+## Request Change Password of Acount *signUp*
 
-Send a email to user mail for Change Password of Acount 
+Change Password of Acount 
 
 <p class="route_text">
-    <span class="method-POST">POST</span> <code>https://unica-accounts.com/api/v1/singup-change-password/</code>
+    <span class="method-PUT">PUT</span> <code>https://unica-accounts.com/api/v1/signup-change-password/</code>
 </p>
 
 <h2>
@@ -17,7 +17,7 @@ Send a email to user mail for Change Password of Acount
 ```json
 {
     "nick_name": "UserExample",
-    "email": "example@email.com"
+    "new_password": "newPassword12*"
 }
 
 ```
@@ -28,7 +28,7 @@ Send a email to user mail for Change Password of Acount
 
 ```json
 {
-    "message": "Succesfull Request Change Password of Acount",
+    "message": "Succesfull Change Password of Acount",
     "status_code": 200
 }
 
@@ -40,7 +40,7 @@ Send a email to user mail for Change Password of Acount
 
 ```json
 {
-    "message": "Error Request Change Password of Acount",
+    "message": "Error Change Password of Acount",
     "status_code": 500
 }
 
@@ -53,10 +53,10 @@ Send a email to user mail for Change Password of Acount
     &emsp; - Request
 </p>
 
-| Name      |       Description       |   Type |
-| --------- |:-----------------------:| ------:|
-| nick_name | NickName of User SingUp | String |
-| email     |    Email of New User    | String |
+| Name         |       Description       |   Type |
+| ------------ |:-----------------------:| ------:|
+| nick_name    | NickName of User signUp | String |
+| new_password | New Password of Account | String |
 
 
 <p class="text_endpoint">

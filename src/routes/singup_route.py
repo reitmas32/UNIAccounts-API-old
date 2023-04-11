@@ -3,7 +3,7 @@ from services.db.idata_base import IDataBase
 from models.user import User
 
 
-def singup_route_POST(parameters_json: dict, data_base: IDataBase):
+def signup_route_POST(parameters_json: dict, data_base: IDataBase):
     new_user, message, status_code = User.from_dict(parameters_json)
     if new_user == None:
         return {'message': f'Error {message}', 'status_code': status_code}, status_code

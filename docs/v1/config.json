@@ -2,11 +2,11 @@
     "files": [
         "home.md",
         "style.md",
-        "singup_POST.md",
-        "singup_DELETE.md",
-        "singin_PUT.md",
-        "singin_GET.md",
-        "singup_change_password_POST.md",
-        "singup_change_password_PUT.md"
+        "signup_POST.md",
+        "signup_DELETE.md",
+        "signin_PUT.md",
+        "signin_GET.md",
+        "signup_change_password_POST.md",
+        "signup_change_password_PUT.md"
     ]
 }

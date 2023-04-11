@@ -53,10 +53,10 @@ This is a API to Manage Accounts<br><br>
 
 </style>
 
-## Create Acount *SingUp*
+## Create Acount *signUp*
 
 <p class="route_text">
-    <span class="method-POST">POST</span> <code>https://unica-accounts.com/api/v1/singup/</code>
+    <span class="method-POST">POST</span> <code>https://unica-accounts.com/api/v1/signup/</code>
 </p>
 
 <h2>
@@ -88,7 +88,7 @@ This is a API to Manage Accounts<br><br>
 
 ```json
 {
-    "message": "Succesfull SingUp",
+    "message": "Succesfull signUp",
     "status_code": 200
 }
 
@@ -100,7 +100,7 @@ This is a API to Manage Accounts<br><br>
 
 ```json
 {
-    "message": "Error SingUp",
+    "message": "Error signUp",
     "status_code": 500
 }
 
@@ -115,7 +115,7 @@ This is a API to Manage Accounts<br><br>
 
 | Name              |         Description        |     Type |
 | ----------------- |:--------------------------:| --------:|
-| nick_name         |   NickName of User SingUp  |   String |
+| nick_name         |   NickName of User signUp  |   String |
 | password          |    Password of New User    |   String |
 | email             |      Email of New User     |  *String |
 | name              |      Name of New User      |   String |
@@ -138,10 +138,10 @@ This is a API to Manage Accounts<br><br>
 
 ****
 
-## Detele Acount *SingUp*
+## Detele Acount *signUp*
 
 <p class="route_text">
-    <span class="method-DELETE">DELETE</span> <code>https://unica-accounts.com/api/v1/singup/</code>
+    <span class="method-DELETE">DELETE</span> <code>https://unica-accounts.com/api/v1/signup/</code>
 </p>
 
 <h2>
@@ -215,10 +215,10 @@ This is a API to Manage Accounts<br><br>
 ****
 
 
-## Login Acount *SingIn*
+## Login Acount *signIn*
 
 <p class="route_text">
-    <span class="method-PUT">PUT</span> <code>https://unica-accounts.com/api/v1/singin/</code>
+    <span class="method-PUT">PUT</span> <code>https://unica-accounts.com/api/v1/signin/</code>
 </p>
 
 <h2>
@@ -248,7 +248,7 @@ This is a API to Manage Accounts<br><br>
 
 ```json
 {
-    "message": "Succesfull SingIn",
+    "message": "Succesfull signIn",
     "status_code": 200,
     "jwt": "juasdhasdaj548456ad3ad64",
 }
@@ -261,7 +261,7 @@ This is a API to Manage Accounts<br><br>
 
 ```json
 {
-    "message": "Error SingIn",
+    "message": "Error signIn",
     "status_code": 500
 }
 
@@ -293,10 +293,10 @@ This is a API to Manage Accounts<br><br>
 
 ****
 
-## Check Acount *SingIn*
+## Check Acount *signIn*
 
 <p class="route_text">
-    <span class="method-GET">GET</span> <code>https://unica-accounts.com/api/v1/singin/</code>
+    <span class="method-GET">GET</span> <code>https://unica-accounts.com/api/v1/signin/</code>
 </p>
 
 <h2>
@@ -345,7 +345,7 @@ This is a API to Manage Accounts<br><br>
 
 ```json
 {
-    "message": "Error SingIn",
+    "message": "Error signIn",
     "status_code": 500
 }
 

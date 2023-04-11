@@ -7,8 +7,8 @@ from services.db.data_base_mongodb import DataBase_MongoDB
 data_base_service = DataBase_MongoDB(app)
 
 import config as CONFIG
-from routes.singup_route import *
-from routes.singin_route import *
+from routes.signup_route import *
+from routes.signin_route import *
 
 @app.route('/', methods=['GET'])
 def index():
@@ -19,8 +19,8 @@ def index():
 def test():
     return 'Hello World!!!'
 
-@app.route('/api/v1/singup', methods=['POST', 'PUT'])
-def singup():
+@app.route('/api/v1/signup', methods=['POST', 'PUT'])
+def signup():
     status, service_name = CONFIG.valid_API_KEY(request.headers.get('API_KEY'))
     
     response = 'Nada'
@@ -31,16 +31,16 @@ def singup():
     if not status:
         return 'No API_KEY Valid'
     
-    if not CONFIG.check_service_permissions(service_name, f'singup_route_{request.method}'):
+    if not CONFIG.check_service_permissions(service_name, f'signup_route_{request.method}'):
         return 'API_KEY Valid but Permission Denied by this request'
         
     if request.method == 'POST':
-        response, status_code = singup_route_POST(request.json, data_base_service)
+        response, status_code = signup_route_POST(request.json, data_base_service)
     
     return response, status_code
 
-@app.route('/api/v1/singin', methods=['PUT', 'GET'])
-def singin():
+@app.route('/api/v1/signin', methods=['PUT', 'GET'])
+def signin():
     status, service_name = CONFIG.valid_API_KEY(request.headers.get('API_KEY'))
     
     response = 'Nada'
@@ -51,14 +51,14 @@ def singin():
     if not status:
         return 'No API_KEY Valid', 401
     
-    if not CONFIG.check_service_permissions(service_name, f'singin_route_{request.method}'):
+    if not CONFIG.check_service_permissions(service_name, f'signin_route_{request.method}'):
         return 'API_KEY Valid but Permission Denied by this request', 403
         
     if request.method == 'PUT':
-        response, status_code = singin_route_PUT(request.json, data_base_service)
+        response, status_code = signin_route_PUT(request.json, data_base_service)
     
     if request.method == 'GET':
-        response = singin_route_GET(request.headers['Authorization'].split(" ")[1], data_base_service)
+        response = signin_route_GET(request.headers['Authorization'].split(" ")[1], data_base_service)
         status_code = response.get('status_code')
     
     return response, status_code
