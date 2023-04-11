@@ -35,6 +35,16 @@ flask --app src/app --debug run
 flask --app src/app run
 ```
 
+### **Recommended by Development Run use Docker Compose**
+**Note: ** Only need this commands by run project
+Requirements
+- [Docker Compose](https://docs.docker.com/compose/)
+```bash
+# Run and Build Docker Compose
+docker-compose build
+docker-compose up
+```
+
 ### **Run Local DataBase With Docker**
 ```bash
 # Run and Build Image with volumes
@@ -60,3 +70,4 @@ docker run -it -p 7000:4000 unica-acounts-api
 | GET    |         /api/v1/singin/         |      ✓ |
 | POST   | /api/v1/singup-change-password/ |      × |
 | PUT    | /api/v1/singup-change-password/ |      × |
+

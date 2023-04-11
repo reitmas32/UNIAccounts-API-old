@@ -8,7 +8,7 @@ from werkzeug.security import check_password_hash
 class DataBase_MongoDB(IDataBase):
     _data_base = None
     def __init__(self, app):
-        app.config["MONGO_URI"] = "mongodb://localhost/test_db"
+        app.config["MONGO_URI"] = "mongodb://mongo_db_unica:27017/test_db"
         self._data_base = PyMongo(app)
     
     def create_user(self, user: User):
