@@ -1,7 +1,7 @@
-## Create Acount *SingUp*
+## Create Acount *signUp*
 
 <p class="route_text">
-    <span class="method-POST">POST</span> <code>https://unica-accounts.com/api/v1/singup/</code>
+    <span class="method-POST">POST</span> <code>https://unica-accounts.com/api/v1/signup/</code>
 </p>
 
 <h2>
@@ -35,7 +35,7 @@
 
 ```json
 {
-    "message": "Succesfull SingUp",
+    "message": "Succesfull signUp",
     "status_code": 200
 }
 
@@ -47,7 +47,7 @@
 
 ```json
 {
-    "message": "Error SingUp",
+    "message": "Error signUp",
     "status_code": 500
 }
 
@@ -62,7 +62,7 @@
 
 | Name              |             Description            |     Type |
 | ----------------- |:----------------------------------:| --------:|
-| nick_name         |       NickName of User SingUp      |   String |
+| nick_name         |       NickName of User signUp      |   String |
 | password          |        Password of New User        |   String |
 | email             |          Email of New User         |  *String |
 | name              |          Name of New User          |   String |

@@ -55,10 +55,10 @@ To consume the API, an API_KEY provided by us is necessary for each of the servi
 }
 
 </style>
-## Create Acount *SingUp*
+## Create Acount *signUp*
 
 <p class="route_text">
-    <span class="method-POST">POST</span> <code>https://unica-accounts.com/api/v1/singup/</code>
+    <span class="method-POST">POST</span> <code>https://unica-accounts.com/api/v1/signup/</code>
 </p>
 
 <h2>
@@ -92,7 +92,7 @@ To consume the API, an API_KEY provided by us is necessary for each of the servi
 
 ```json
 {
-    "message": "Succesfull SingUp",
+    "message": "Succesfull signUp",
     "status_code": 200
 }
 
@@ -104,7 +104,7 @@ To consume the API, an API_KEY provided by us is necessary for each of the servi
 
 ```json
 {
-    "message": "Error SingUp",
+    "message": "Error signUp",
     "status_code": 500
 }
 
@@ -119,7 +119,7 @@ To consume the API, an API_KEY provided by us is necessary for each of the servi
 
 | Name              |             Description            |     Type |
 | ----------------- |:----------------------------------:| --------:|
-| nick_name         |       NickName of User SingUp      |   String |
+| nick_name         |       NickName of User signUp      |   String |
 | password          |        Password of New User        |   String |
 | email             |          Email of New User         |  *String |
 | name              |          Name of New User          |   String |
@@ -139,10 +139,10 @@ To consume the API, an API_KEY provided by us is necessary for each of the servi
 | ----------- |:-------------------:| -------:|
 | message     | Message of Response |  String |
 | status_code |   Status Code HTTP  | Integer |
-## Detele Acount *SingUp*
+## Detele Acount *signUp*
 
 <p class="route_text">
-    <span class="method-DELETE">DELETE</span> <code>https://unica-accounts.com/api/v1/singup/</code>
+    <span class="method-DELETE">DELETE</span> <code>https://unica-accounts.com/api/v1/signup/</code>
 </p>
 
 <h2>
@@ -213,10 +213,10 @@ To consume the API, an API_KEY provided by us is necessary for each of the servi
 | ----------- |:-------------------:| -------:|
 | message     | Message of Response |  String |
 | status_code |   Status Code HTTP  | Integer |
-## Login Acount *SingIn*
+## Login Acount *signIn*
 
 <p class="route_text">
-    <span class="method-PUT">PUT</span> <code>https://unica-accounts.com/api/v1/singin/</code>
+    <span class="method-PUT">PUT</span> <code>https://unica-accounts.com/api/v1/signin/</code>
 </p>
 
 <h2>
@@ -246,7 +246,7 @@ To consume the API, an API_KEY provided by us is necessary for each of the servi
 
 ```json
 {
-    "message": "Succesfull SingIn",
+    "message": "Succesfull signIn",
     "status_code": 200,
     "jwt": "juasdhasdaj548456ad3ad64",
 }
@@ -259,7 +259,7 @@ To consume the API, an API_KEY provided by us is necessary for each of the servi
 
 ```json
 {
-    "message": "Error SingIn",
+    "message": "Error signIn",
     "status_code": 500
 }
 
@@ -288,10 +288,10 @@ To consume the API, an API_KEY provided by us is necessary for each of the servi
 | message     | Message of Response |  String |
 | status_code |   Status Code HTTP  | Integer |
 | jwt         |    JSON Web Token   |  String |
-## Check Acount *SingIn*
+## Check Acount *signIn*
 
 <p class="route_text">
-    <span class="method-GET">GET</span> <code>https://unica-accounts.com/api/v1/singin/</code>
+    <span class="method-GET">GET</span> <code>https://unica-accounts.com/api/v1/signin/</code>
 </p>
 
 <h2>
@@ -359,12 +359,12 @@ TOKEN: 'sklndansd548488a4dajndbkabdbasd'
 | ------------ |:-------------------:| -------:|
 | message      | Message of Response |  String |
 | status_code  |   Status Code HTTP  | Integer |
-## Request Change Password of Acount *SingUp*
+## Request Change Password of Acount *signUp*
 
 Send a email to user mail for Change Password of Acount 
 
 <p class="route_text">
-    <span class="method-POST">POST</span> <code>https://unica-accounts.com/api/v1/singup-change-password/</code>
+    <span class="method-POST">POST</span> <code>https://unica-accounts.com/api/v1/signup-change-password/</code>
 </p>
 
 <h2>
@@ -416,7 +416,7 @@ Send a email to user mail for Change Password of Acount
 
 | Name      |       Description       |   Type |
 | --------- |:-----------------------:| ------:|
-| nick_name | NickName of User SingUp | String |
+| nick_name | NickName of User signUp | String |
 | email     |    Email of New User    | String |
 
 
@@ -428,12 +428,12 @@ Send a email to user mail for Change Password of Acount
 | ----------- |:-------------------:| -------:|
 | message     | Message of Response |  String |
 | status_code |   Status Code HTTP  | Integer |
-## Request Change Password of Acount *SingUp*
+## Request Change Password of Acount *signUp*
 
 Change Password of Acount 
 
 <p class="route_text">
-    <span class="method-PUT">PUT</span> <code>https://unica-accounts.com/api/v1/singup-change-password/</code>
+    <span class="method-PUT">PUT</span> <code>https://unica-accounts.com/api/v1/signup-change-password/</code>
 </p>
 
 <h2>
@@ -485,7 +485,7 @@ Change Password of Acount
 
 | Name         |       Description       |   Type |
 | ------------ |:-----------------------:| ------:|
-| nick_name    | NickName of User SingUp | String |
+| nick_name    | NickName of User signUp | String |
 | new_password | New Password of Account | String |
 
 

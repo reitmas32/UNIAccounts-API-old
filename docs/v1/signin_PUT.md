@@ -1,7 +1,7 @@
-## Detele Acount *SingUp*
+## Login Acount *signIn*
 
 <p class="route_text">
-    <span class="method-DELETE">DELETE</span> <code>https://unica-accounts.com/api/v1/singup/</code>
+    <span class="method-PUT">PUT</span> <code>https://unica-accounts.com/api/v1/signin/</code>
 </p>
 
 <h2>
@@ -31,8 +31,9 @@
 
 ```json
 {
-    "message": "Succesfull Delete Account",
-    "status_code": 200
+    "message": "Succesfull signIn",
+    "status_code": 200,
+    "jwt": "juasdhasdaj548456ad3ad64",
 }
 
 ```
@@ -43,7 +44,7 @@
 
 ```json
 {
-    "message": "Error to Delete",
+    "message": "Error signIn",
     "status_code": 500
 }
 
@@ -63,7 +64,6 @@
 | email          |      Email of New User     | *String |
 | account_number | Number Account of New User | *String |
 
-
 <p class="text_endpoint">
     &emsp; - Response
 </p>
@@ -72,3 +72,4 @@
 | ----------- |:-------------------:| -------:|
 | message     | Message of Response |  String |
 | status_code |   Status Code HTTP  | Integer |
+| jwt         |    JSON Web Token   |  String |

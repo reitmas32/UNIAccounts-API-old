@@ -16,7 +16,7 @@ class DataBase_MongoDB(IDataBase):
             return 'Error nick_name in use', 428
         print(user.password)
         id = self._data_base.db.users.insert_one(user.__dict__())
-        return 'Succesfull SingUp', 200
+        return 'Succesfull signUp', 200
     
     def find_user(self, user: User):
         parameter_auth_key = ''
@@ -40,7 +40,7 @@ class DataBase_MongoDB(IDataBase):
             user_jwt = write_token(data=user.__dict__())
         else:
             return {'message':'Password Invalid', 'status_code' :403}
-        return {'message':'Succesfull SingIn', 'status_code' :200, 'jwt': str(user_jwt, encoding='UTF-8')}
+        return {'message':'Succesfull signIn', 'status_code' :200, 'jwt': str(user_jwt, encoding='UTF-8')}
     
     def check_token_user(self, token_authorization):
         response_valid_token = validate_token(token=token_authorization)

@@ -36,7 +36,7 @@ flask --app src/app run
 ```
 
 ### **Recommended by Development Run use Docker Compose**
-**Note: ** Only need this commands by run project
+**Note:** Only need this commands by run project
 Requirements
 - [Docker Compose](https://docs.docker.com/compose/)
 ```bash
@@ -64,10 +64,10 @@ docker run -it -p 7000:4000 unica-acounts-api
 ### **Endpoints Dev Status**
 | Method |             Endpoint            | Status |
 | ------ |:-------------------------------:| ------:|
-| POST   |         /api/v1/singup/         |      ✓ |
-| DELETE |         /api/v1/singup/         |      × |
-| PUT    |         /api/v1/singin/         |      ✓ |
-| GET    |         /api/v1/singin/         |      ✓ |
-| POST   | /api/v1/singup-change-password/ |      × |
-| PUT    | /api/v1/singup-change-password/ |      × |
+| POST   |         /api/v1/signup/         |      ✓ |
+| DELETE |         /api/v1/signup/         |      × |
+| PUT    |         /api/v1/signin/         |      ✓ |
+| GET    |         /api/v1/signin/         |      ✓ |
+| POST   | /api/v1/signup-change-password/ |      × |
+| PUT    | /api/v1/signup-change-password/ |      × |
 

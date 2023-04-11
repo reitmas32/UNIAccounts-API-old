@@ -1,3 +1,5 @@
+import requests
+
 from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
@@ -7,8 +9,9 @@ from services.db.data_base_mongodb import DataBase_MongoDB
 data_base_service = DataBase_MongoDB(app)
 
 import config as CONFIG
-from routes.singup_route import *
-from routes.singin_route import *
+import ENVS
+from routes.signup_route import *
+from routes.signin_route import *
 
 @app.route('/', methods=['GET'])
 def index():
@@ -19,8 +22,8 @@ def index():
 def test():
     return 'Hello World!!!'
 
-@app.route('/api/v1/singup', methods=['POST', 'PUT'])
-def singup():
+@app.route('/api/v1/signup', methods=['POST', 'PUT'])
+def signup():
     status, service_name = CONFIG.valid_API_KEY(request.headers.get('API_KEY'))
     
     response = 'Nada'
@@ -31,16 +34,17 @@ def singup():
     if not status:
         return 'No API_KEY Valid'
     
-    if not CONFIG.check_service_permissions(service_name, f'singup_route_{request.method}'):
+    if not CONFIG.check_service_permissions(service_name, f'signup_route_{request.method}'):
         return 'API_KEY Valid but Permission Denied by this request'
         
     if request.method == 'POST':
-        response, status_code = singup_route_POST(request.json, data_base_service)
+        response = signup_route_POST(request.json, data_base_service)
+        status_code = response.get('status_code')
     
     return response, status_code
 
-@app.route('/api/v1/singin', methods=['PUT', 'GET'])
-def singin():
+@app.route('/api/v1/signin', methods=['PUT', 'GET'])
+def signin():
     status, service_name = CONFIG.valid_API_KEY(request.headers.get('API_KEY'))
     
     response = 'Nada'
@@ -51,37 +55,53 @@ def singin():
     if not status:
         return 'No API_KEY Valid', 401
     
-    if not CONFIG.check_service_permissions(service_name, f'singin_route_{request.method}'):
+    if not CONFIG.check_service_permissions(service_name, f'signin_route_{request.method}'):
         return 'API_KEY Valid but Permission Denied by this request', 403
         
     if request.method == 'PUT':
-        response, status_code = singin_route_PUT(request.json, data_base_service)
+        response = signin_route_PUT(request.json, data_base_service)
+        status_code = response.get('status_code')
     
     if request.method == 'GET':
-        response = singin_route_GET(request.headers['Authorization'].split(" ")[1], data_base_service)
+        response = signin_route_GET(request.headers['Authorization'].split(" ")[1], data_base_service)
         status_code = response.get('status_code')
     
     return response, status_code
-
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup_users():
     if request.method == 'POST':
         # Obtener los datos del formulario de registro
-        username = request.form['username']
-        password = request.form['password']
-        email = request.form['email']
+        nick_name  = request.form['nick_name']
+        password  = request.form['password']
+        email  = request.form['email']
+        name   = request.form['name']
+        last_name_fathers   = request.form['last_name_fathers']
+        last_name_mothers  = request.form['last_name_mothers']
+        account_number  = request.form['account_number']
+        careers  = request.form['careers']
+        role   = request.form['role']
+        role_key  = request.form['role_key']
+        half_year = request.form['half_year']
         
-        print('Nuevo Usuario')
-
-        # Validar los datos del formulario de registro
-        # (Aquí puedes agregar tu lógica de validación, por ejemplo, consultar una base de datos para verificar si el usuario ya existe)
-
-        # Si los datos son válidos, se realiza el registro
-        # (Aquí puedes agregar tu lógica de registro, por ejemplo, agregar el usuario a una base de datos)
-
+        query = {
+            'nick_name'         : nick_name,
+            'password'          : password,
+            'email'             : email,
+            'name'              : name,
+            'last_name_fathers' : last_name_fathers,
+            'last_name_mothers' : last_name_mothers,
+            'account_number'    : account_number,
+            'careers'           : careers,
+            'half_year'         : half_year,
+            'role'              : role,
+            'role_key'          : role_key,
+        }
+        
+        response = requests.post('http://127.0.0.1:4000/api/v1/signup',json=query, headers={'API_KEY': ENVS.API_KEYS.get('UNICA_MANAGER_ACCOUNTS_API')} )
+        
         # Retornar la respuesta adecuada
-        return jsonify({'message': 'Registro exitoso. ¡Bienvenido a nuestra aplicación!'})
+        return response.text
     else:
         # Mostrar el formulario de registro
         return render_template('signup.html')
