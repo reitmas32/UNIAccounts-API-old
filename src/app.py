@@ -35,7 +35,8 @@ def signup():
         return 'API_KEY Valid but Permission Denied by this request'
         
     if request.method == 'POST':
-        response, status_code = signup_route_POST(request.json, data_base_service)
+        response = signup_route_POST(request.json, data_base_service)
+        status_code = response.get('status_code')
     
     return response, status_code
 
@@ -55,7 +56,8 @@ def signin():
         return 'API_KEY Valid but Permission Denied by this request', 403
         
     if request.method == 'PUT':
-        response, status_code = signin_route_PUT(request.json, data_base_service)
+        response = signin_route_PUT(request.json, data_base_service)
+        status_code = response.get('status_code')
     
     if request.method == 'GET':
         response = signin_route_GET(request.headers['Authorization'].split(" ")[1], data_base_service)
