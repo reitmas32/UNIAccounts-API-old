@@ -7,8 +7,7 @@ def signin_route_PUT(parameters_json: dict, data_base: IDataBase, service_name: 
     new_user = User.from_dict_password_nohash(parameters_json)
     if new_user == None:
         return {'message': 'Error User no created', 'status_code': 428}
-    response = data_base.find_user(new_user, service_name)
-    response = {'message': response.get('message'), 'status_code': response.get('status_code'), 'jwt': response.get('jwt')}
+    response = data_base.signin_user(new_user, service_name)
     return response
 
 
