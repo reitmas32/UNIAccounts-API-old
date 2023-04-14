@@ -12,6 +12,6 @@ def signin_route_PUT(parameters_json: dict, data_base: IDataBase, service_name: 
     return response
 
 
-def signin_route_GET(token_authorization, data_base: IDataBase):
+def signin_route_GET(token_authorization, data_base: IDataBase, service_name: str):
     response = data_base.check_token_user(token_authorization)
     return {'message': response.get('message'), 'status_code': response.get('status_code')}
