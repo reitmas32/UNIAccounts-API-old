@@ -42,6 +42,13 @@ class DataBase_MongoDB(IDataBase):
         else:
             return {'message':'Password Invalid', 'status_code' :403}
         return {'message':'Succesfull signIn', 'status_code' :200, 'jwt': str(user_jwt, encoding='UTF-8')}
+    
+    def signin_user(self, user: User, service_name: str):
+        response_find_user = self.find_user(user, service_name)
+        if TOOLS_Dict.get_from_dict(response_find_user, 'status_code', default_value=0) != 200:
+            return response_find_user
+        _ = self._create_new_session(TOOLS_Dict.get_from_dict(response_find_user, 'jwt'), service_name=service_name)
+        return response_find_user
      
     def check_token_user(self, token_authorization):
         response_valid_token = validate_token(token=token_authorization)
