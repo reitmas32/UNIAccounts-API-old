@@ -38,7 +38,7 @@ def signup():
         return 'API_KEY Valid but Permission Denied by this request'
         
     if request.method == 'POST':
-        response = signup_route_POST(request.json, data_base_service)
+        response = signup_route_POST(request.json, data_base_service, service_name)
         status_code = response.get('status_code')
     
     return response, status_code
