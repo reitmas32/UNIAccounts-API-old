@@ -3,6 +3,7 @@ from models.user import User
 from services.db.idata_base import IDataBase
 from flask_pymongo import PyMongo
 from werkzeug.security import check_password_hash
+import tools.functions_dict as TOOLS_Dict
 
 
 class DataBase_MongoDB(IDataBase):
@@ -11,14 +12,14 @@ class DataBase_MongoDB(IDataBase):
         app.config["MONGO_URI"] = "mongodb://mongo_db_unica:27017/test_db"
         self._data_base = PyMongo(app)
     
-    def create_user(self, user: User):
+    def create_user(self, user: User, service_name: str):
         if self._data_base.db.users.find_one({'nick_name': user.nick_name}) != None:
             return 'Error nick_name in use', 428
         print(user.password)
         id = self._data_base.db.users.insert_one(user.__dict__())
         return 'Succesfull signUp', 200
     
-    def find_user(self, user: User):
+    def find_user(self, user: User, service_name: str):
         parameter_auth_key = ''
         parameter_auth_value = ''
         if user.account_number != None:
@@ -41,7 +42,7 @@ class DataBase_MongoDB(IDataBase):
         else:
             return {'message':'Password Invalid', 'status_code' :403}
         return {'message':'Succesfull signIn', 'status_code' :200, 'jwt': str(user_jwt, encoding='UTF-8')}
-    
+     
     def check_token_user(self, token_authorization):
         response_valid_token = validate_token(token=token_authorization)
         response = {}
