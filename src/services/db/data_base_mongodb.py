@@ -49,6 +49,9 @@ class DataBase_MongoDB(IDataBase):
             return response_find_user
         _ = self._create_new_session(TOOLS_Dict.get_from_dict(response_find_user, 'jwt'), service_name=service_name)
         return response_find_user
+    
+    def _create_new_session(self, JWT: str, service_name: str):
+        return self._data_base.db.session.insert_one({'JWT': JWT, 'service_name': service_name, 'status': 'ACTIVE'})
      
     def check_token_user(self, token_authorization):
         response_valid_token = validate_token(token=token_authorization)
