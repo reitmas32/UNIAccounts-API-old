@@ -63,7 +63,7 @@ def signin():
         status_code = response.get('status_code')
     
     if request.method == 'GET':
-        response = signin_route_GET(request.headers['Authorization'].split(" ")[1], data_base_service)
+        response = signin_route_GET(request.headers['Authorization'].split(" ")[1], data_base_service, service_name)
         status_code = response.get('status_code')
     
     return response, status_code
