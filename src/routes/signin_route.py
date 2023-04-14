@@ -4,9 +4,9 @@ from tools.funtions_jwt import validate_token
 
 
 def signin_route_PUT(parameters_json: dict, data_base: IDataBase):
-    new_user, message, status_code = User.from_dict_password_nohash(parameters_json)
+    new_user = User.from_dict_password_nohash(parameters_json)
     if new_user == None:
-        return {'message': f'Error {message}', 'status_code': status_code}
+        return {'message': 'Error User no created', 'status_code': 428}
     response = data_base.find_user(new_user)
     response = {'message': response.get('message'), 'status_code': response.get('status_code'), 'jwt': response.get('jwt')}
     return response
