@@ -5,6 +5,12 @@ SERVICE_PERMISSIONS = {
     'UNICA_MANAGER_ACCOUNTS_API': ['signup_route_POST', 'signin_route_PUT', 'signin_route_GET']
 }
 
+PORT = 4000
+
+DEBUG = True
+
+HOST = '0.0.0.0'
+
 import ENVS
 
 def valid_API_KEY(API_KEY: str) :
