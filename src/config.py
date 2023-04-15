@@ -1,6 +1,6 @@
 ######################################################################
 # author = Rafael Zamora
-# copyright = Copyright 2020-2023, UNICA-ManagerAccounts
+# copyright = Copyright 2023, UNICA-ManagerAccounts
 # date = 06/04/2023
 # license = PSF
 # version = 1.0
