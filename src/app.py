@@ -1,3 +1,14 @@
+######################################################################
+# author = Rafael Zamora
+# copyright = Copyright 2020-2023, UNICA-ManagerAccounts
+# date = 06/04/2023
+# license = PSF
+# version = 1.0
+# maintainer = Rafael Zamora
+# email = rafa.zamora.rals@gmail.com
+# status = Development
+######################################################################
+
 import requests
 
 from flask import Flask, request, jsonify, render_template
