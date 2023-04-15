@@ -9,20 +9,24 @@
 # status = Development
 ######################################################################
 
+# External Packages
 import requests
-
 from flask import Flask, request, jsonify, render_template
 
-app = Flask(__name__)
 
-# Create DataBase Conection
+# Local Packages
 from services.db.data_base_mongodb import DataBase_MongoDB
-data_base_service = DataBase_MongoDB(app)
-
 import config as CONFIG
 import ENVS
 from routes.signup_route import *
 from routes.signin_route import *
+
+# Create App Flask
+app = Flask(__name__)
+
+# Create DataBase Conection
+data_base_service = DataBase_MongoDB(app)
+
 
 @app.route('/', methods=['GET'])
 def index():
