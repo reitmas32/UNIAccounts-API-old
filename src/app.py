@@ -1,75 +1,119 @@
-import requests
+######################################################################
+# author = Rafael Zamora
+# copyright = Copyright 2023, UNICA-ManagerAccounts
+# date = 06/04/2023
+# license = PSF
+# version = 1.0
+# maintainer = Rafael Zamora
+# email = rafa.zamora.rals@gmail.com
+# status = Development
+######################################################################
 
+# External Packages
+import requests
 from flask import Flask, request, jsonify, render_template
 
-app = Flask(__name__)
 
-# Create DataBase Conection
+# Local Packages
 from services.db.data_base_mongodb import DataBase_MongoDB
-data_base_service = DataBase_MongoDB(app)
-
 import config as CONFIG
 import ENVS
 from routes.signup_route import *
 from routes.signin_route import *
 
+# Create App Flask
+app = Flask(__name__)
+
+# Create DataBase Conection
+data_base_service = DataBase_MongoDB(app)
+
+
 @app.route('/', methods=['GET'])
 def index():
+    """Respond with the API documentation
+
+    Returns:
+        str: API Documentation
+    """
     api_docs = open(f"api_{CONFIG.API_VERSION}.html", "r")
     return api_docs.read()
 
 @app.route('/test', methods=['GET'])
 def test():
+    """Test Route
+
+    Returns:
+        str:
+    """
     return 'Hello World!!!'
 
 @app.route('/api/v1/signup', methods=['POST', 'PUT'])
 def signup():
+    """SignUp EndPoint
+
+    Returns:
+        dict: JSON response
+        int: status code of the request 
+    """
     status, service_name = CONFIG.valid_API_KEY(request.headers.get('API_KEY'))
     
-    response = 'Nada'
+    response = ''
     status_code = 404
     
     if not request.is_json:
-        return 'No content Type'
+        return 'No content Type', 401
     if not status:
-        return 'No API_KEY Valid'
+        return 'No API_KEY Valid', 403
     
     if not CONFIG.check_service_permissions(service_name, f'signup_route_{request.method}'):
         return 'API_KEY Valid but Permission Denied by this request'
         
     if request.method == 'POST':
-        response = signup_route_POST(request.json, data_base_service)
+        response = signup_route_POST(request.json, data_base_service, service_name)
         status_code = response.get('status_code')
     
     return response, status_code
 
 @app.route('/api/v1/signin', methods=['PUT', 'GET'])
 def signin():
+    """SignIn EndPoint
+
+    Returns:
+        dict: JSON response
+        int: status code of the request 
+    """
     status, service_name = CONFIG.valid_API_KEY(request.headers.get('API_KEY'))
     
-    response = 'Nada'
+    response = ''
     status_code = 404
     
     if not request.is_json and request.method != 'GET':
-        return 'No content Type'
+        return 'No content Type', 401
     if not status:
-        return 'No API_KEY Valid', 401
+        return 'No API_KEY Valid', 403
     
     if not CONFIG.check_service_permissions(service_name, f'signin_route_{request.method}'):
         return 'API_KEY Valid but Permission Denied by this request', 403
         
     if request.method == 'PUT':
-        response = signin_route_PUT(request.json, data_base_service)
+        response = signin_route_PUT(request.json, data_base_service, service_name)
         status_code = response.get('status_code')
     
     if request.method == 'GET':
-        response = signin_route_GET(request.headers['Authorization'].split(" ")[1], data_base_service)
+        response = signin_route_GET(request.headers['Authorization'].split(" ")[1], data_base_service, service_name)
         status_code = response.get('status_code')
     
     return response, status_code
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup_users():
+    """SignUp Form
+
+    Returns:
+        str: Form by SignUp
+        -------------------
+        dict: JSON response
+    """
     if request.method == 'POST':
         # Obtener los datos del formulario de registro
         nick_name  = request.form['nick_name']
@@ -107,4 +151,4 @@ def signup_users():
         return render_template('signup.html')
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=4000, debug=True)
+    app.run(host=CONFIG.HOST, port=CONFIG.PORT, debug=CONFIG.DEBUG)

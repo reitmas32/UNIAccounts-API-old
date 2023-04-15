@@ -1,5 +1,19 @@
-from werkzeug.security import generate_password_hash, check_password_hash
+######################################################################
+# author = Rafael Zamora
+# copyright = Copyright 2023, UNICA-ManagerAccounts
+# date = 06/04/2023
+# license = PSF
+# version = 1.0
+# maintainer = Rafael Zamora
+# email = rafa.zamora.rals@gmail.com
+# status = Development
+######################################################################
 
+# System Packages
+from werkzeug.security import generate_password_hash
+
+# Local Packages
+import tools.functions_dict as TOOLS_Dict
 
 class User:
     nick_name= '' 
@@ -25,59 +39,62 @@ class User:
                 self.role  = role 
                 self.role_key = role_key
                 self.half_year = half_year
-                
+
     @staticmethod
     def from_dict_password_nohash(obj: dict):
-        
-        if obj.get('account_number') != None or obj.get('nick_name') != None or obj.get('email') != None:
-            pass
-        else:
-            return None, 'No account_number, nick_name, or email send in the request', 428
-        if obj.get('password') == None:
-            return None, 'No password send in the request', 428
-        # Auth
-        nick_name           = str(obj.get("nick_name"))
-        password            = str(obj.get("password"))
-        account_number      = str(obj.get("account_number"))
-        email               = str(obj.get("email"))
+        """Create a user to appear from a dict with the disregarded password
 
-        return User(nick_name=nick_name,password=password,email=email,account_number=account_number), 'Succesful User', 200
-                
+        Args:
+            obj (dict): Data
+
+        Returns:
+            User: new User
+        """
+        
+        user = User.from_dict(obj)
+        user.password = str(TOOLS_Dict.get_from_dict(obj, "password"))
+
+        return user
+    
     @staticmethod
     def from_dict(obj: dict):
+        """Create a user to appear from a dict
+
+        Args:
+            obj (dict): Data
+
+        Returns:
+            User: new User
+        """
         
-        if obj.get('account_number') == None:
-            return None, 'No account_number send in the request', 428
-        if obj.get('password') == None:
-            return None, 'No password send in the request', 428
-        if obj.get('role') == None or obj.get('role_key') == None:
-            return None, 'No role send in the request', 428
-        if obj.get('account_number') == None:
-            return None, 'No email, nick_name', 428
         # Auth
-        nick_name           = str(obj.get("nick_name"))
-        password            = generate_password_hash(str(obj.get("password")))
+        nick_name           = str(TOOLS_Dict.get_from_dict(obj, "nick_name"))
+        password            = generate_password_hash(str(TOOLS_Dict.get_from_dict(obj, "password")))
         # Email
-        email               = str(obj.get("email"))
+        email               = str(TOOLS_Dict.get_from_dict(obj, "email"))
         
         # Name
-        name                = str(obj.get("name")).upper()
-        last_name_fathers   = str(obj.get("last_name_fathers")).upper()
-        last_name_mothers   = str(obj.get("last_name_mothers")).upper()
+        name                = str(TOOLS_Dict.get_from_dict(obj, "name")).upper()
+        last_name_fathers   = str(TOOLS_Dict.get_from_dict(obj, "last_name_fathers")).upper()
+        last_name_mothers   = str(TOOLS_Dict.get_from_dict(obj, "last_name_mothers")).upper()
         
         # Data Academic
-        account_number      = str(obj.get("account_number"))
-        if not account_number.isdigit() and len(account_number) != 9:
-            return None, 'account_number invalid', 428
-        careers             = str(obj.get("careers"))
-        half_year           = int(obj.get("half_year"))
+        account_number      = str(TOOLS_Dict.get_from_dict(obj, "account_number"))
+        careers             = str(TOOLS_Dict.get_from_dict(obj, "careers"))
+        half_year           = int(TOOLS_Dict.get_from_dict(obj, "half_year", default_value = 0))
         
         # Permissions
-        role                = str(obj.get("role"))
-        role_key            = str(obj.get("role_key"))
-        return User(nick_name,password,email,name ,last_name_fathers ,last_name_mothers,account_number,careers,role ,role_key,half_year), 'Succesful User', 200
+        role                = str(TOOLS_Dict.get_from_dict(obj, "role"))
+        role_key            = str(TOOLS_Dict.get_from_dict(obj, "role_key"))
+        
+        return User(nick_name,password,email,name ,last_name_fathers ,last_name_mothers,account_number,careers,role ,role_key,half_year)
     
     def __dict__(self):
+        """Convert the User to object dict
+
+        Returns:
+            dict: Data Dict
+        """
         data = {
             'nick_name'         : self.nick_name,
             'password'          : self.password,
