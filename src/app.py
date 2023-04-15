@@ -107,4 +107,4 @@ def signup_users():
         return render_template('signup.html')
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=4000, debug=True)
+    app.run(host=CONFIG.HOST, port=CONFIG.PORT, debug=CONFIG.DEBUG)
