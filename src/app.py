@@ -30,24 +30,40 @@ data_base_service = DataBase_MongoDB(app)
 
 @app.route('/', methods=['GET'])
 def index():
+    """Respond with the API documentation
+
+    Returns:
+        str: API Documentation
+    """
     api_docs = open(f"api_{CONFIG.API_VERSION}.html", "r")
     return api_docs.read()
 
 @app.route('/test', methods=['GET'])
 def test():
+    """Test Route
+
+    Returns:
+        str:
+    """
     return 'Hello World!!!'
 
 @app.route('/api/v1/signup', methods=['POST', 'PUT'])
 def signup():
+    """SingUp EndPoint
+
+    Returns:
+        dict: JSON response
+        int: status code of the request 
+    """
     status, service_name = CONFIG.valid_API_KEY(request.headers.get('API_KEY'))
     
-    response = 'Nada'
+    response = ''
     status_code = 404
     
     if not request.is_json:
-        return 'No content Type'
+        return 'No content Type', 401
     if not status:
-        return 'No API_KEY Valid'
+        return 'No API_KEY Valid', 403
     
     if not CONFIG.check_service_permissions(service_name, f'signup_route_{request.method}'):
         return 'API_KEY Valid but Permission Denied by this request'
