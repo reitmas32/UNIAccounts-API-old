@@ -42,7 +42,14 @@ class User:
 
     @staticmethod
     def from_dict_password_nohash(obj: dict):
-        
+        """Create a user to appear from a dict with the disregarded password
+
+        Args:
+            obj (dict): Data
+
+        Returns:
+            User: new User
+        """
         
         user = User.from_dict(obj)
         user.password = str(TOOLS_Dict.get_from_dict(obj, "password"))
@@ -51,6 +58,15 @@ class User:
     
     @staticmethod
     def from_dict(obj: dict):
+        """Create a user to appear from a dict
+
+        Args:
+            obj (dict): Data
+
+        Returns:
+            User: new User
+        """
+        
         # Auth
         nick_name           = str(TOOLS_Dict.get_from_dict(obj, "nick_name"))
         password            = generate_password_hash(str(TOOLS_Dict.get_from_dict(obj, "password")))
@@ -70,9 +86,15 @@ class User:
         # Permissions
         role                = str(TOOLS_Dict.get_from_dict(obj, "role"))
         role_key            = str(TOOLS_Dict.get_from_dict(obj, "role_key"))
+        
         return User(nick_name,password,email,name ,last_name_fathers ,last_name_mothers,account_number,careers,role ,role_key,half_year)
     
     def __dict__(self):
+        """Convert the User to object dict
+
+        Returns:
+            dict: Data Dict
+        """
         data = {
             'nick_name'         : self.nick_name,
             'password'          : self.password,
