@@ -1,8 +1,24 @@
+######################################################################
+# author = Rafael Zamora
+# copyright = Copyright 2023, UNICA-ManagerAccounts
+# date = 10/04/2023
+# license = PSF
+# version = 1.0
+# maintainer = Rafael Zamora
+# email = rafa.zamora.rals@gmail.com
+# status = Development
+######################################################################
+
+# System Packages
+from werkzeug.security import check_password_hash
+
+# External Packages
+from flask_pymongo import PyMongo
+
+# Local Packages
 from tools.funtions_jwt import write_token, validate_token
 from models.user import User
 from services.db.idata_base import IDataBase
-from flask_pymongo import PyMongo
-from werkzeug.security import check_password_hash
 import tools.functions_dict as TOOLS_Dict
 
 def check_password_match(user_request: dict, user: User):
