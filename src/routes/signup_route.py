@@ -1,7 +1,17 @@
+######################################################################
+# author = Rafael Zamora
+# copyright = Copyright 2023, UNICA-ManagerAccounts
+# date = 06/04/2023
+# license = PSF
+# version = 1.0
+# maintainer = Rafael Zamora
+# email = rafa.zamora.rals@gmail.com
+# status = Development
+######################################################################
 
+# Local Packages
 from services.db.idata_base import IDataBase
 from models.user import User
-
 
 def signup_route_POST(parameters_json: dict, data_base: IDataBase, service_name: str):
     new_user = User.from_dict(parameters_json)
