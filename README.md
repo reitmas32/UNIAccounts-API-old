@@ -67,6 +67,7 @@ docker run -it -p 7000:4000 unica-acounts-api
 | POST   |         /api/v1/signup/         |      ✓ |
 | DELETE |         /api/v1/signup/         |      × |
 | PUT    |         /api/v1/signin/         |      ✓ |
+| PUT    |         /api/v1/signout/        |      ✓ |
 | GET    |         /api/v1/signin/         |      ✓ |
 | POST   | /api/v1/signup-change-password/ |      × |
 | PUT    | /api/v1/signup-change-password/ |      × |
