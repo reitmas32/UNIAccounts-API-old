@@ -45,6 +45,15 @@ class IDataBase:
         """
         pass
     
+    def signout_user(self, user: User, service_name: str):
+        """End a user's session
+
+        Args:
+            user (User): User to signin
+            service_name (str): Name of the service requested by the operation
+        """
+        pass
+    
     def _create_new_session(self, JWT: str, service_name: str):
         """Create a new Session
 
