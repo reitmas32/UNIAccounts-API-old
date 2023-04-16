@@ -161,8 +161,10 @@ class DataBase_MongoDB(IDataBase):
         response_valid_token = validate_token(token=token_authorization)
         if response_valid_token.get('user') == '':
             return {'message': response_valid_token.get('message'), 'status_code': 401}
-        self._data_base.db.session.replace_one(
+        result = self._data_base.db.session.replace_one(
             {'JWT': token_authorization,'service_name': service_name, 'status': 'ACTIVE'},
             {'JWT': token_authorization,'service_name': service_name, 'status': 'DISABLED'}
             )
+        if result.matched_count == 0:
+            return {'message': 'SignOut Error The service is not the owner of the session', 'status_code': 401}
         return {'message': 'SignOut Successful', 'status_code': 200}
