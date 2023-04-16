@@ -45,11 +45,11 @@ class IDataBase:
         """
         pass
     
-    def signout_user(self, user: User, service_name: str):
+    def signout_user(self, token_authorization: str, service_name: str):
         """End a user's session
 
         Args:
-            user (User): User to signin
+            token_authorization (str): JWT of session
             service_name (str): Name of the service requested by the operation
         """
         pass

@@ -20,6 +20,7 @@ import config as CONFIG
 import ENVS
 from routes.signup_route import *
 from routes.signin_route import *
+from routes.signout_route import *
 
 # Create App Flask
 app = Flask(__name__)
@@ -35,7 +36,7 @@ def index():
     Returns:
         str: API Documentation
     """
-    api_docs = open(f"api_{CONFIG.API_VERSION}.html", "r")
+    api_docs = open(f"src/api_{CONFIG.API_VERSION}.html", "r")
     return api_docs.read()
 
 @app.route('/test', methods=['GET'])
@@ -101,6 +102,33 @@ def signin():
     
     if request.method == 'GET':
         response = signin_route_GET(request.headers['Authorization'].split(" ")[1], data_base_service, service_name)
+        status_code = response.get('status_code')
+    
+    return response, status_code
+
+@app.route('/api/v1/signout', methods=['PUT'])
+def signout():
+    """SignOut EndPoint
+
+    Returns:
+        dict: JSON response
+        int: status code of the request 
+    """
+    status, service_name = CONFIG.valid_API_KEY(request.headers.get('API_KEY'))
+    
+    response = ''
+    status_code = 404
+    
+    if not request.is_json and request.method != 'GET':
+        return 'No content Type', 401
+    if not status:
+        return 'No API_KEY Valid', 403
+    
+    if not CONFIG.check_service_permissions(service_name, f'signout_route_{request.method}'):
+        return 'API_KEY Valid but Permission Denied by this request', 403
+        
+    if request.method == 'PUT':
+        response = signout_route_PUT(request.headers['Authorization'].split(" ")[1], data_base_service, service_name)
         status_code = response.get('status_code')
     
     return response, status_code
