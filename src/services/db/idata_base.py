@@ -54,3 +54,15 @@ class IDataBase:
         """
         pass
     
+    def check_token_user(self, token_authorization: str, service_name: str):
+        """verify that the session corresponding to the token is active 
+
+        Args:
+            token_authorization (str): JWT of session
+            service_name (str): Name of the service requested by the operation
+
+        Returns:
+            dict: response of the operation in the DataBase
+        """
+        pass
+    
