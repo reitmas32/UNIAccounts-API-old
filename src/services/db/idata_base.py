@@ -45,12 +45,33 @@ class IDataBase:
         """
         pass
     
+    def signout_user(self, user: User, service_name: str):
+        """End a user's session
+
+        Args:
+            user (User): User to signin
+            service_name (str): Name of the service requested by the operation
+        """
+        pass
+    
     def _create_new_session(self, JWT: str, service_name: str):
         """Create a new Session
 
         Args:
             JWT (str): JWT of user session
             service_name (str): Name of the service requested by the operation
+        """
+        pass
+    
+    def check_token_user(self, token_authorization: str, service_name: str):
+        """verify that the session corresponding to the token is active 
+
+        Args:
+            token_authorization (str): JWT of session
+            service_name (str): Name of the service requested by the operation
+
+        Returns:
+            dict: response of the operation in the DataBase
         """
         pass
     
