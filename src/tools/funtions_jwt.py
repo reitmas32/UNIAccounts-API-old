@@ -57,10 +57,10 @@ def validate_token(token: str):
         dict: response of func
     """
     try:
-        return {"message": "Valid Token", "status": decode(token, key=ENVS.SECRET_KEY_TOKEN, algorithms=["HS256"])}
+        return {"message": "Valid Token", "user": decode(token, key=ENVS.SECRET_KEY_TOKEN, algorithms=["HS256"])}
     except exceptions.DecodeError:
-        response = {"message": "Invalid Token"}
+        response = {"message": "Invalid Token", 'user': ''}
         return response
     except exceptions.ExpiredSignatureError:
-        response = {"message": "Token Expired"}
+        response = {"message": "Token Expired", 'user': ''}
         return response
