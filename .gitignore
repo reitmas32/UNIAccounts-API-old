@@ -7,6 +7,10 @@ __pycache__/
 src/ENVS.py
 DB/
 
+# Files Docs
+docs/api_v*.md
+docs/api_v*.html
+
 # C extensions
 *.so
 
