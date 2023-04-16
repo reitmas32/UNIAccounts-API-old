@@ -43,7 +43,9 @@ class DataBase_MongoDB(IDataBase):
         Args:
             app (Flask): App Flask
         """
-        app.config["MONGO_URI"] = "mongodb://mongo_db_unica:27017/test_db"
+        # Local DB 
+        app.config["MONGO_URI"] = "mongodb://localhost/test_db"
+        #app.config["MONGO_URI"] = "mongodb://mongo_db_unica:27017/test_db"
         self._data_base = PyMongo(app)
     
     def create_user(self, user: User, service_name: str):
@@ -77,7 +79,6 @@ class DataBase_MongoDB(IDataBase):
         elif user.email != None:
             parameter_auth_key = 'email'
             parameter_auth_value = user.email
-            
         request_mongodb = self._data_base.db.users.find_one({parameter_auth_key: parameter_auth_value})
         if request_mongodb == None:
             return {'message':'Error no User Exist', 'status_code' :403}
@@ -99,7 +100,9 @@ class DataBase_MongoDB(IDataBase):
         # Generate JWT
         if _check_password_match(user_response, user) == True:
             user.password = ''
-            user_jwt = write_token(data=user.__dict__())
+            user_response['_id'] = ''
+            user_response['password'] = ''
+            user_jwt = write_token(data=user_response)
         else:
             return {'message':'Password Invalid', 'status_code' :403}
         
@@ -108,7 +111,7 @@ class DataBase_MongoDB(IDataBase):
         
         if TOOLS_Dict.get_from_dict(response, 'status_code', default_value=0) != 200:
             return response
-        _ = self._create_new_session(TOOLS_Dict.get_from_dict(response_find_user, 'jwt'), service_name=service_name)
+        _ = self._create_new_session(str(user_jwt, encoding='UTF-8'), service_name=service_name)
         return response
     
     def _create_new_session(self, JWT: str, service_name: str):
@@ -130,13 +133,20 @@ class DataBase_MongoDB(IDataBase):
         Returns:
             dict: response of the operation in the DataBase
         """
-        # TODO: verify searching in the tablesessions
+        # Validate Token
         response_valid_token = validate_token(token=token_authorization)
-        response = {}
-        if response_valid_token.get('status'):
-            response = {'message': response_valid_token.get('message'), 'status_code': 200}
-        else:
-            response = {'message': response_valid_token.get('message'), 'status_code': 401}
-            
-        return response
+        if response_valid_token.get('user') == '':
+            self._data_base.db.session.replace_one(
+                {'JWT': token_authorization,'service_name': service_name, 'status': 'ACTIVE'},
+                {'JWT': token_authorization,'service_name': service_name, 'status': 'DISABLED'}
+                )
+            return {'message': response_valid_token.get('message'), 'status_code': 401}
+        
+        # Find Active Session
+        session_response = self._data_base.db.session.find_one({'JWT': token_authorization,'service_name': service_name, 'status': 'ACTIVE'})
+        if session_response == None:
+            return {'message': 'Sesion DISABLED', 'status_code': 401}
+        
+        # Return user data
+        return response_valid_token
         
