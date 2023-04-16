@@ -149,4 +149,20 @@ class DataBase_MongoDB(IDataBase):
         
         # Return user data
         return response_valid_token
-        
+    
+    def signout_user(self, token_authorization: str, service_name: str):
+        """End a user's session
+
+        Args:
+            token_authorization (str): JWT of session
+            service_name (str): Name of the service requested by the operation
+        """
+        # Validate Token
+        response_valid_token = validate_token(token=token_authorization)
+        if response_valid_token.get('user') == '':
+            return {'message': response_valid_token.get('message'), 'status_code': 401}
+        self._data_base.db.session.replace_one(
+            {'JWT': token_authorization,'service_name': service_name, 'status': 'ACTIVE'},
+            {'JWT': token_authorization,'service_name': service_name, 'status': 'DISABLED'}
+            )
+        return {'message': 'SignOut Successful', 'status_code': 200}
