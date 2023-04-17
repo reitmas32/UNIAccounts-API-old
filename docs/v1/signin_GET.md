@@ -12,9 +12,13 @@
     &emsp; - Request
 </p>
 
-```bash
-AUTH
+```yaml
+in: AUTH
 TOKEN: 'sklndansd548488a4dajndbkabdbasd'
+```
+```yaml
+in: HEADERS
+API_KEY: 'sklndansd548488a4dajndbkabdbasd'
 ```
 **Notes:**<br>
 - For Check Authentication is necessary ``jwt``
@@ -26,8 +30,22 @@ TOKEN: 'sklndansd548488a4dajndbkabdbasd'
 
 ```json
 {
-    "message": "Valid Token",
-    "status_code": 200
+  "message": "Valid Token",
+  "user": {
+    "_id": "",
+    "account_number": "1",
+    "careers": "Ingenieria en Computación",
+    "email": "example@email.com",
+    "exp": 1681877688,
+    "half_year": 3,
+    "last_name_fathers": "PÉREZ",
+    "last_name_mothers": "ACOSTA",
+    "name": "RUBEN RODRIGO",
+    "nick_name": "ruber45",
+    "password": "", ## Password void
+    "role": "admin",
+    "role_key": "sdasad4534junSD"
+  }
 }
 
 ```
@@ -58,14 +76,16 @@ TOKEN: 'sklndansd548488a4dajndbkabdbasd'
     &emsp; - Request
 </p>
 
-| Name  |      Description     |   Type |
-| ----- |:--------------------:| ------:|
-| TOKEN | Password of New User | String |
+| Section | Name    |           Description          |   Type |
+| ------- | ------- |:------------------------------:| ------:|
+| AUTH    | TOKEN   |      Password of New User      | String |
+| HEADERS | API_KEY | API key provided by the system | String |
 <p class="text_endpoint">
     &emsp; - Response
 </p>
 
-| Name         |     Description     |    Type |
-| ------------ |:-------------------:| -------:|
-| message      | Message of Response |  String |
-| status_code  |   Status Code HTTP  | Integer |
+| Name        |     Description     |       Type |
+| ----------- |:-------------------:| ----------:|
+| message     | Message of Response |     String |
+| user        |      User data      | JSON *[User]* |
+| status_code |   Status Code HTTP  |    Integer |

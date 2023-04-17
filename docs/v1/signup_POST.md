@@ -8,6 +8,11 @@
     Examples
 </h2>
 
+```yaml
+in: HEADERS
+API_KEY: 'sklndansd548488a4dajndbkabdbasd'
+```
+
 <p class="text_endpoint">
     &emsp; - Request
 </p>
@@ -52,7 +57,16 @@
 }
 
 ```
+<p class="text_endpoint">
+    &emsp; - Response 428 ERROR
+</p>
 
+```json
+{
+  "message": "Error nick_name in use",
+  "status_code": 428
+}
+```
 <h2>
     Table Types
 </h2>
