@@ -8,6 +8,11 @@
     Examples
 </h2>
 
+```yaml
+in: HEADERS
+API_KEY: 'sklndansd548488a4dajndbkabdbasd'
+```
+
 <p class="text_endpoint">
     &emsp; - Request
 </p>
@@ -34,6 +39,7 @@
     "message": "Succesfull signIn",
     "status_code": 200,
     "jwt": "juasdhasdaj548456ad3ad64",
+    "service_name": "UNICA_MANAGER_ACCOUNTS_API"
 }
 
 ```
@@ -49,7 +55,16 @@
 }
 
 ```
+<p class="text_endpoint">
+    &emsp; - Response 403 ERROR
+</p>
 
+```json
+{
+  "message": "Password Invalid",
+  "status_code": 403
+}
+```
 <h2>
     Table Types
 </h2>
@@ -68,8 +83,9 @@
     &emsp; - Response
 </p>
 
-| Name        |     Description     |    Type |
-| ----------- |:-------------------:| -------:|
-| message     | Message of Response |  String |
-| status_code |   Status Code HTTP  | Integer |
-| jwt         |    JSON Web Token   |  String |
+| Name         |     Description     |    Type |
+| ------------ |:-------------------:| -------:|
+| message      | Message of Response |  String |
+| status_code  |   Status Code HTTP  | Integer |
+| jwt          |    JSON Web Token   |  String |
+| service_name |     Service Name    |  String |
