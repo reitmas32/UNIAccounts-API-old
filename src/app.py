@@ -16,17 +16,34 @@ from flask import Flask, request, jsonify, render_template
 
 # Local Packages
 from services.db.data_base_mongodb import DataBase_MongoDB
+from services.db.data_base_array import DataBase_Array
 import config as CONFIG
 import ENVS
 from routes.signup_route import *
 from routes.signin_route import *
 from routes.signout_route import *
 
+def valid_credentials(_request, name_endpoint):
+    status, service_name = CONFIG.valid_API_KEY(_request.headers.get('API_KEY'))
+    response = ''
+    
+    if not status:
+        return {'message': 'No API_KEY Valid',
+                'status': False, 'service_name': '',
+                'status_code': 403}
+    
+    if not CONFIG.check_service_permissions(service_name, name_endpoint):
+        return {'message': 'API_KEY Valid but Permission Denied by this request',
+                'status': False, 'service_name': '',
+                'status_code': 403}
+
+    return {'message': response, 'status': status, 'service_name': service_name, 'status_code': 200}
+
 # Create App Flask
 app = Flask(__name__)
 
 # Create DataBase Conection
-data_base_service = DataBase_MongoDB(app)
+data_base_service = DataBase_Array(app)
 
 
 @app.route('/', methods=['GET'])
@@ -56,18 +73,11 @@ def signup():
         dict: JSON response
         int: status code of the request 
     """
-    status, service_name = CONFIG.valid_API_KEY(request.headers.get('API_KEY'))
+    response_credentials = valid_credentials(request, f'signup_route_{request.method}')
+    service_name = response_credentials.get('service_name')
     
-    response = ''
-    status_code = 404
-    
-    if not request.is_json:
-        return 'No content Type', 401
-    if not status:
-        return 'No API_KEY Valid', 403
-    
-    if not CONFIG.check_service_permissions(service_name, f'signup_route_{request.method}'):
-        return 'API_KEY Valid but Permission Denied by this request'
+    if response_credentials.get('status') == False:
+        return response_credentials, response_credentials.get('status_code')
         
     if request.method == 'POST':
         response = signup_route_POST(request.json, data_base_service, service_name)
@@ -83,18 +93,14 @@ def signin():
         dict: JSON response
         int: status code of the request 
     """
-    status, service_name = CONFIG.valid_API_KEY(request.headers.get('API_KEY'))
+    response_credentials = valid_credentials(request, f'signin_route_{request.method}')
+    service_name = response_credentials.get('service_name')
     
-    response = ''
-    status_code = 404
+    if response_credentials.get('status') == False:
+        return response_credentials, response_credentials.get('status_code')
     
     if not request.is_json and request.method != 'GET':
-        return 'No content Type', 401
-    if not status:
-        return 'No API_KEY Valid', 403
-    
-    if not CONFIG.check_service_permissions(service_name, f'signin_route_{request.method}'):
-        return 'API_KEY Valid but Permission Denied by this request', 403
+        return {'message': 'No content Type'}, 401
         
     if request.method == 'PUT':
         response = signin_route_PUT(request.json, data_base_service, service_name)
@@ -114,18 +120,11 @@ def signout():
         dict: JSON response
         int: status code of the request 
     """
-    status, service_name = CONFIG.valid_API_KEY(request.headers.get('API_KEY'))
+    response_credentials = valid_credentials(request, f'signout_route_{request.method}')
+    service_name = response_credentials.get('service_name')
     
-    response = ''
-    status_code = 404
-    
-    if not request.is_json and request.method != 'GET':
-        return 'No content Type', 401
-    if not status:
-        return 'No API_KEY Valid', 403
-    
-    if not CONFIG.check_service_permissions(service_name, f'signout_route_{request.method}'):
-        return 'API_KEY Valid but Permission Denied by this request', 403
+    if response_credentials.get('status') == False:
+        return response_credentials, response_credentials.get('status_code')
         
     if request.method == 'PUT':
         response = signout_route_PUT(request.headers['Authorization'].split(" ")[1], data_base_service, service_name)
