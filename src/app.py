@@ -16,15 +16,15 @@ from flask import Flask, request, jsonify, render_template
 
 # Local Packages
 from services.db.data_base_mongodb import DataBase_MongoDB
+from services.db.data_base_array import DataBase_Array
 import config as CONFIG
 import ENVS
 from routes.signup_route import *
 from routes.signin_route import *
 from routes.signout_route import *
 
-def valid_credentials(_request):
+def valid_credentials(_request, name_endpoint):
     status, service_name = CONFIG.valid_API_KEY(_request.headers.get('API_KEY'))
-    
     response = ''
     
     if not status:
@@ -32,7 +32,7 @@ def valid_credentials(_request):
                 'status': False, 'service_name': '',
                 'status_code': 403}
     
-    if not CONFIG.check_service_permissions(service_name, f'signup_route_{_request.method}'):
+    if not CONFIG.check_service_permissions(service_name, name_endpoint):
         return {'message': 'API_KEY Valid but Permission Denied by this request',
                 'status': False, 'service_name': '',
                 'status_code': 403}
@@ -43,7 +43,7 @@ def valid_credentials(_request):
 app = Flask(__name__)
 
 # Create DataBase Conection
-data_base_service = DataBase_MongoDB(app)
+data_base_service = DataBase_Array(app)
 
 
 @app.route('/', methods=['GET'])
@@ -73,7 +73,7 @@ def signup():
         dict: JSON response
         int: status code of the request 
     """
-    response_credentials = valid_credentials(request)
+    response_credentials = valid_credentials(request, f'signup_route_{request.method}')
     service_name = response_credentials.get('service_name')
     
     if response_credentials.get('status') == False:
@@ -93,7 +93,7 @@ def signin():
         dict: JSON response
         int: status code of the request 
     """
-    response_credentials = valid_credentials(request)
+    response_credentials = valid_credentials(request, f'signin_route_{request.method}')
     service_name = response_credentials.get('service_name')
     
     if response_credentials.get('status') == False:
@@ -120,14 +120,11 @@ def signout():
         dict: JSON response
         int: status code of the request 
     """
-    response_credentials = valid_credentials(request)
+    response_credentials = valid_credentials(request, f'signout_route_{request.method}')
     service_name = response_credentials.get('service_name')
     
     if response_credentials.get('status') == False:
         return response_credentials, response_credentials.get('status_code')
-    
-    if not request.is_json and request.method != 'GET':
-        return {'message': 'No content Type'}, 401
         
     if request.method == 'PUT':
         response = signout_route_PUT(request.headers['Authorization'].split(" ")[1], data_base_service, service_name)
