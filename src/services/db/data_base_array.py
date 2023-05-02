@@ -18,6 +18,8 @@ from models.user import User
 from services.db.idata_base import IDataBase
 import tools.functions_dict as TOOLS_Dict
 
+
+
 def _check_password_match(user_request: dict, user: User):
     """Compare a hash password and a non-hash
 

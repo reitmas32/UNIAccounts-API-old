@@ -16,7 +16,7 @@ from datetime import datetime, timedelta
 from jwt import encode, decode, exceptions
 
 # Local Packages
-import ENVS
+import config as CONFIG
 
 
 def expire_date(days: int):
@@ -43,7 +43,7 @@ def write_token(data: dict):
         bytes: token generated
     """
     token = encode(payload={**data, "exp": expire_date(2)},
-                   key=ENVS.SECRET_KEY_TOKEN, algorithm="HS256")
+                   key=CONFIG.SECRET_KEY_TOKEN, algorithm="HS256")
     return token.encode("UTF-8")
 
 
@@ -57,7 +57,7 @@ def validate_token(token: str):
         dict: response of func
     """
     try:
-        return {"message": "Valid Token", "user": decode(token, key=ENVS.SECRET_KEY_TOKEN, algorithms=["HS256"])}
+        return {"message": "Valid Token", "user": decode(token, key=CONFIG.SECRET_KEY_TOKEN, algorithms=["HS256"])}
     except exceptions.DecodeError:
         response = {"message": "Invalid Token", 'user': ''}
         return response

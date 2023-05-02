@@ -10,7 +10,7 @@
 ######################################################################
 
 # Local Packages
-from models.user import User
+from models import User
 
 class IDataBase:
     """Interface for connections to different databases
