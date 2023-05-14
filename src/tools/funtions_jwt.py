@@ -1,26 +1,15 @@
-######################################################################
-# author = Rafael Zamora
-# copyright = Copyright 2023, UNICA-ManagerAccounts
-# date = 10/04/2023
-# license = PSF
-# version = 1.0
-# maintainer = Rafael Zamora
-# email = rafa.zamora.rals@gmail.com
-# status = Development
-######################################################################
-
 # System Packages
 from datetime import datetime, timedelta
 
 # External Packages
-from jwt import encode, decode, exceptions
+from jwt import decode, encode, exceptions
 
 # Local Packages
-import config as CONFIG
+import config.base as CONFIG
 
 
 def expire_date(days: int):
-    """Generates a date and from the current date plus the indicated days 
+    """Generates a date and from the current date plus the indicated days
 
     Args:
         days (int):
@@ -42,8 +31,11 @@ def write_token(data: dict):
     Returns:
         bytes: token generated
     """
-    token = encode(payload={**data, "exp": expire_date(2)},
-                   key=CONFIG.SECRET_KEY_TOKEN, algorithm="HS256")
+    token = encode(
+        payload={**data, "exp": expire_date(2)},
+        key=CONFIG.SECRET_KEY_TOKEN,
+        algorithm="HS256",
+    )
     return token.encode("UTF-8")
 
 
@@ -57,10 +49,13 @@ def validate_token(token: str):
         dict: response of func
     """
     try:
-        return {"message": "Valid Token", "user": decode(token, key=CONFIG.SECRET_KEY_TOKEN, algorithms=["HS256"])}
+        return {
+            "message": "Valid Token",
+            "user": decode(token, key=CONFIG.SECRET_KEY_TOKEN, algorithms=["HS256"]),
+        }
     except exceptions.DecodeError:
-        response = {"message": "Invalid Token", 'user': ''}
+        response = {"message": "Invalid Token", "user": ""}
         return response
     except exceptions.ExpiredSignatureError:
-        response = {"message": "Token Expired", 'user': ''}
+        response = {"message": "Token Expired", "user": ""}
         return response

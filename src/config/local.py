@@ -1,3 +1,6 @@
-from .base import config
+import os
 
-SQLALCHEMY_DATABASE_URI="sqlite:///database_local.db"
+from .base import BASE_DIR
+
+DATABASE_PATH = os.path.join(BASE_DIR, "mydatabase.db")
+SQLALCHEMY_DATABASE_URI = "sqlite:///" + DATABASE_PATH

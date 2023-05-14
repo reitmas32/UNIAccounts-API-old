@@ -1,6 +1,71 @@
 # UNICA-ManagerAccounts-API
 API to Manage UNICA System Accounts
 
+### Informacion referente a migraciones
+
+* **flask db init:** este comando inicializa el directorio de migraciones en el proyecto,creando una carpeta llamada migrations en la raíz del proyecto.
+
+* **flask db migrate:** este comando detecta los cambios en los modelos y genera un archivo  de migración en la carpeta migrations.
+
+* **flask db upgrade:** este comando aplica las migraciones pendientes al esquema de la base de datos, creando o actualizando las tablas según sea necesario.
+
+### Informacion referente a los pre-commit
+
+Si deseas contribuir al proyecto no olvidar pre-formatear tu codigo con ayuda de pre-commit, para ello deberas instalar las configuraciones escribiendo
+el siguiente comando:
+
+```bash
+pre-commit install
+```
+
+Lo anterior hara que antes de que se cargue tu commit, verificara que tu codigo implementado cumpla con ciertos estandares y reglas.
+
+
+Si deseas verificar todo el codigo
+
+```bash
+pre-commit run --all-files
+```
+
+Si deseas verificar todo el codigo
+
+```bash
+git commit -m "fix: lakdsljflaksjdlkf"  --no-verify
+```
+
+### Poner breakpoints
+
+
+```python
+import pudb; pudb.set_trace()
+```
+
+### Ejecutar proyecto en local
+
+Se van a la carpeta src
+
+```python
+flask run
+```
+
+Si quieres especificar el puerto
+
+```python
+flask run --port=NUMERO_PUERTO
+```
+
+Si quieres que se carguen los cambios que haces instantaneamente
+
+```python
+flask run --port=NUMERO_PUERTO --debug
+```
+
+
+
+
+
+
+
 ## Instructions by Run Server Flask
 
 ### **Create Env**
@@ -71,4 +136,3 @@ docker run -it -p 7000:4000 unica-acounts-api
 | GET    |         /api/v1/signin/         |      ✓ |
 | POST   | /api/v1/signup-change-password/ |      × |
 | PUT    | /api/v1/signup-change-password/ |      × |
-
