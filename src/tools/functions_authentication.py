@@ -1,3 +1,7 @@
+from http import HTTPStatus
+
+from flask import request
+
 import config.base as CONFIG
 from api.v1.services.services import ServicesService
 
@@ -22,6 +26,16 @@ from api.v1.services.services import ServicesService
 #     return False
 
 
+def validate_credentials(func):
+    def validate_credentials_wrapper(*args, **kwargs):
+        response_credentials, status_code = valid_headers()
+        if not response_credentials.get("Success"):
+            return response_credentials, status_code
+        return func(*args, **kwargs)
+
+    return validate_credentials_wrapper
+
+
 def valid_API_KEY(service: str, api_key: str) -> bool:
     """Validates if an API_KEY is authorized for the use of the API
 
@@ -37,7 +51,7 @@ def valid_API_KEY(service: str, api_key: str) -> bool:
     return False
 
 
-def valid_credentials(_request):
+def valid_headers(_request):
 
     is_valid_api_key = valid_API_KEY(
         service=_request.headers.get("Service"), api_key=_request.headers.get("Api-Key")
@@ -47,4 +61,5 @@ def valid_credentials(_request):
         "Message": "API_KEY Valid" if is_valid_api_key else "Not API_KEY Valid",
         "Data": {},
     }
-    return response
+    status_code = HTTPStatus.OK if is_valid_api_key else HTTPStatus.UNAUTHORIZED
+    return response, status_code

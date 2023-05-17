@@ -61,7 +61,22 @@ flask run --port=NUMERO_PUERTO --debug
 ```
 
 
+### Crear entorno virtual
 
+* https://www.adictosaltrabajo.com/2018/11/06/gestion-de-versiones-de-python-con-pipenv/
+
+* pip3 install virtualenv
+* virtualenv venv-3.9 -p python3.9
+* source venv-3.9/bin/activate
+python -V
+
+
+
+### Crear la base de datos de prueba
+
+```bash
+flask db upgrade
+```
 
 
 

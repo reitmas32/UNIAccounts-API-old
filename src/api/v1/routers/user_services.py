@@ -3,13 +3,13 @@ from flask import Blueprint, request
 
 from tools.functions_authentication import valid_headers
 
-from ..views.users import signup_route_POST
+from ..views.user_services import signup_service_route_POST
 
-views_users = Blueprint("users", __name__)
+views_user_services = Blueprint("user_services", __name__)
 
 
-@views_users.route("/api/v1/signup", methods=["POST"])
-def signup():
+@views_user_services.route("/api/v1/signup_service", methods=["POST"])
+def signup_service():
     """SignUp EndPoint
 
     Returns:
@@ -22,5 +22,5 @@ def signup():
         return response_credentials, status_code
 
     if request.method == "POST":
-        response = signup_route_POST(parameters_json=request.get_json())
+        response = signup_service_route_POST(request=request)
         return response

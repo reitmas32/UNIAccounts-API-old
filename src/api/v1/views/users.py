@@ -1,5 +1,8 @@
 # Local Packages
+from http import HTTPStatus
+
 from pydantic import ValidationError
+from sqlalchemy.exc import IntegrityError
 
 from ..schemas import UserSchema
 from ..services.users import UserService
@@ -26,18 +29,18 @@ def signup_route_POST(parameters_json: dict):
             "Message": "Data invalid for create user",
             "Data": {"errors": errors},
         }
-        return response
+        return response, HTTPStatus.BAD_REQUEST
 
     user_service = UserService()
     try:
         user_service.create_user(user_data=user_schema)
-    except Exception as e:
+    except IntegrityError as e:
         response = {
             "Success": False,
             "Message": "Error for create user",
             "Data": {"errors": str(e)},
         }
-        return response
+        return response, HTTPStatus.INTERNAL_SERVER_ERROR
 
     response = {
         "Success": True,
@@ -52,4 +55,4 @@ def signup_route_POST(parameters_json: dict):
             "role": user_schema.role,
         },
     }
-    return response
+    return response, HTTPStatus.CREATED

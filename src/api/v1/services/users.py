@@ -23,3 +23,11 @@ class UserService:
         session.commit()
         session.close()
         return user
+
+    def get_user_by_user_name(self, user_name: str) -> UsersModel:
+        session = get_session()
+        user = (
+            session.query(UsersModel).filter(UsersModel.user_name == user_name).first()
+        )
+        session.close()
+        return user

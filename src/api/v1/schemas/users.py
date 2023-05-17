@@ -12,3 +12,8 @@ class UserSchema(BaseModel):
     date_of_birth: datetime
     password: str
     role: str
+
+
+class UserSigninSchema(BaseModel):
+    user_name: str
+    password: str
