@@ -42,6 +42,7 @@ def signin_route_PUT(request):
         )
 
     if user:
+        user_mother_id = str(user.id) if service.mother_login else str(user.user_id)
         is_valid_password = check_password_hash(
             user.password, user_signin_schema.password
         )
@@ -50,7 +51,7 @@ def signin_route_PUT(request):
                 data={
                     "user_name": user_signin_schema.user_name,
                     "service_name": service.name,
-                    "service_id": str(service.id),
+                    "user_mother_id": user_mother_id,
                 },
                 minutes_until_expire=service.jwt_exp,
             )
@@ -82,7 +83,7 @@ def validate_token_route_GET(request):
         name_token = authorization[0]
         token = authorization[1]
         if name_token != CONFIG.TOKEN_TYPE:
-            pass
+            raise IndexError()
     except IndexError:
         response = {
             "Success": False,
