@@ -134,7 +134,7 @@ pyenv.cfg
 .dmypy.json
 dmypy.json
 
-.db
+*.db
 .sqlite3
 
 # Pyre type checker
