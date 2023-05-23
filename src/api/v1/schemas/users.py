@@ -9,7 +9,7 @@ class UserSchema(BaseModel):
     email: EmailStr
     user_name: str
     phone_number: str
-    date_of_birth: datetime
+    date_of_birth: str
     password: str
     role: str
 
