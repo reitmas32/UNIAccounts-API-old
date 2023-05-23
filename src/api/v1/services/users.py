@@ -1,3 +1,4 @@
+from datetime import datetime
 from werkzeug.security import generate_password_hash
 
 from config.database import get_session
@@ -15,7 +16,7 @@ class UserService:
             email=user_data.email,
             user_name=user_data.user_name,
             phone_number=user_data.phone_number,
-            date_of_birth=user_data.date_of_birth,
+            date_of_birth=datetime.strptime(user_data.date_of_birth, "%d-%m-%Y"),
             password=generate_password_hash(user_data.password),
             role=user_data.role,
         )
