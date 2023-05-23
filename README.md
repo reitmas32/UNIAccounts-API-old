@@ -1,94 +1,15 @@
 # UNICA-ManagerAccounts-API
 API to Manage UNICA System Accounts
 
-### Informacion referente a migraciones
+## How run this project 
+<br>
 
-* **flask db init:** este comando inicializa el directorio de migraciones en el proyecto,creando una carpeta llamada migrations en la raíz del proyecto.
-
-* **flask db migrate:** este comando detecta los cambios en los modelos y genera un archivo  de migración en la carpeta migrations.
-
-* **flask db upgrade:** este comando aplica las migraciones pendientes al esquema de la base de datos, creando o actualizando las tablas según sea necesario.
-
-### Informacion referente a los pre-commit
-
-Si deseas contribuir al proyecto no olvidar pre-formatear tu codigo con ayuda de pre-commit, para ello deberas instalar las configuraciones escribiendo
-el siguiente comando:
-
+- **Create Env**
 ```bash
-pre-commit install
+python -m venv env/local #env/local is the directory of your env
 ```
 
-Lo anterior hara que antes de que se cargue tu commit, verificara que tu codigo implementado cumpla con ciertos estandares y reglas.
-
-
-Si deseas verificar todo el codigo
-
-```bash
-pre-commit run --all-files
-```
-
-Si deseas verificar todo el codigo
-
-```bash
-git commit -m "fix: lakdsljflaksjdlkf"  --no-verify
-```
-
-### Poner breakpoints
-
-
-```python
-import pudb; pudb.set_trace()
-```
-
-### Ejecutar proyecto en local
-
-Se van a la carpeta src
-
-```python
-flask run
-```
-
-Si quieres especificar el puerto
-
-```python
-flask run --port=NUMERO_PUERTO
-```
-
-Si quieres que se carguen los cambios que haces instantaneamente
-
-```python
-flask run --port=NUMERO_PUERTO --debug
-```
-
-
-### Crear entorno virtual
-
-* https://www.adictosaltrabajo.com/2018/11/06/gestion-de-versiones-de-python-con-pipenv/
-
-* pip3 install virtualenv
-* virtualenv venv-3.9 -p python3.9
-* source venv-3.9/bin/activate
-python -V
-
-
-
-### Crear la base de datos de prueba
-
-```bash
-flask db upgrade
-```
-
-
-
-
-## Instructions by Run Server Flask
-
-### **Create Env**
-```bash
-python -m venv venv
-```
-
-### **Activate Env**
+- **Activate Env**
 ```bash
 #Linux bash/zsh
 source venv/bin/activate
@@ -100,46 +21,41 @@ venv\Scripts\activate.bat
 venv\Scripts\activate.ps1
 ```
 
-### **Install dependencies**
+- **Install Requeriments.txt *Local***
 
 ```bash
-pip3 install -r requirements.txt
-```
-### **Run Server App**
-
-```bash
-# Debug Mode
-flask --app src/app --debug run
-
-#Release Mode
-flask --app src/app run
+pip3 install -r requirements/local.txt
 ```
 
-### **Recommended by Development Run use Docker Compose**
-**Note:** Only need this commands by run project
-Requirements
-- [Docker Compose](https://docs.docker.com/compose/)
-```bash
-# Run and Build Docker Compose
-docker-compose build
-docker-compose up
-```
+- **Init Flask Project**
 
-### **Run Local DataBase With Docker**
-```bash
-# Run and Build Image with volumes
-docker run -d -p 27017:27017 -v $ABS_ROUTE_OF_PROJECT/UNICA-ManagerAccounts-API/DB:/data/db --name database mongo
-```
+    how to create migrations
 
-### **Run Server With Docker**
+    * **flask db init:** This command initializes the migrations directory in the project, creating a folder called migrations in the root of the project.
 
-```bash
-# Build Image
-docker build -t unica-acounts-api .
+    * **flask db migrate:** This command detects changes to the models and generates a migration file in the migrations folder.
 
-#Run Image
-docker run -it -p 7000:4000 unica-acounts-api
-```
+    * **flask db upgrade:** This command applies the pending migrations to the database schema, creating or updating the tables as necessary.
+
+- **Run project locally**
+
+    navigate to src path
+
+    ```python
+    flask run
+    ```
+
+    If you want to specify the port
+
+    ```python
+    flask run --port=NUMERO_PUERTO
+    ```
+
+    Run App on Debug Mode
+
+    ```python
+    flask run --port=NUMERO_PUERTO --debug
+    ```
 
 ### **Endpoints Dev Status**
 | Method |             Endpoint            | Status |
@@ -147,7 +63,6 @@ docker run -it -p 7000:4000 unica-acounts-api
 | POST   |         /api/v1/signup/         |      ✓ |
 | DELETE |         /api/v1/signup/         |      × |
 | PUT    |         /api/v1/signin/         |      ✓ |
-| PUT    |         /api/v1/signout/        |      ✓ |
 | GET    |         /api/v1/signin/         |      ✓ |
 | POST   | /api/v1/signup-change-password/ |      × |
 | PUT    | /api/v1/signup-change-password/ |      × |
