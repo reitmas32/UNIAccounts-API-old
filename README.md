@@ -1,4 +1,4 @@
-# UNICA-ManagerAccounts-API
+# UNIACCOUNTS
 API to Manage UNICA System Accounts
 
 ## Instructions by Run Server Flask
