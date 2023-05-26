@@ -10,7 +10,14 @@ smtp_port = CONFIG.SMTP_PORT
 smtp_username = CONFIG.SMTP_USER
 smtp_password = CONFIG.SMTP_PASSWORD
 
-def sendEmail(destination: str, subject: str, body: str):
+def generateHTML_forgot_code(code: str):
+    with open("templates/forgot_password.html", "r") as file:
+        html_content = file.read()
+    html_content = html_content.replace("{{ codigo }}", code)
+    return html_content
+    
+
+def sendEmail(destination: str, subject: str, html_content: str):
     
     # Crear el mensaje de correo electrónico
     message = MIMEMultipart()
@@ -19,8 +26,8 @@ def sendEmail(destination: str, subject: str, body: str):
     message['Subject'] = subject
 
     # Cuerpo del correo electrónico
-    body = body
-    message.attach(MIMEText(body, 'plain'))
+    html_body = MIMEText(html_content, 'html')
+    message.attach(html_body)
     
     response = 'Error to Send Email'
 

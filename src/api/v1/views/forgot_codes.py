@@ -9,7 +9,7 @@ from ..schemas import UserForgotPasswordSchema, ForgotCodesSchema, ForgotCodesPa
 from ..services.users import UserService
 from ..services.forgot_code import ForgotCodeService
 
-from tools.email import sendEmail, hideEmail
+from tools.email import sendEmail, hideEmail, generateHTML_forgot_code
 
 def forgot_password_POST(parameters_json: dict):
     """EndPoint /forgot-password with method HTTP POST, Reset Password use email
@@ -46,9 +46,9 @@ def forgot_password_POST(parameters_json: dict):
         #Create Schema
         forgot_code_schema = ForgotCodesSchema(code=code, user_name=user_data.user_name)
         forgot_code_service.create_forgot_code(forgot_code_schema)
-        
+        body_html = generateHTML_forgot_code(str(code))
         #SendEmail
-        send_email_response = sendEmail(user_data.email, 'Forgot Password', f'Your Code is: {code}')
+        send_email_response = sendEmail(user_data.email, 'Forgot Password', body_html)
     except IntegrityError as e:
         response = {
             "Success": False,
@@ -59,7 +59,7 @@ def forgot_password_POST(parameters_json: dict):
 
     response = {
         "Success": True,
-        "Message": send_email_response,
+        "Message": 'send_email_response',
         "Data": {
             "user_name": user_forgot_password_schema.user_name,
             "user_email": hideEmail(user_data.email)
