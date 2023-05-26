@@ -29,7 +29,22 @@ def sendEmail(destination: str, subject: str, body: str):
         server.starttls()
         server.login(smtp_username, smtp_password)
         server.send_message(message)
-        response = 'Success full send Email'
+        response = f'Success full send Email: {hideEmail(destination)}'
     
     return response
         
+def hideEmail(email: str) -> str:
+    parts = email.split("@")
+    username = parts[0]
+    domain = parts[1]
+    
+    # Ocultar caracteres del nombre de usuario (solo muestra los primeros dos caracteres y los asteriscos)
+    hidden_username = username[:2] + "*" * (len(username) - 2)
+    
+    # Ocultar caracteres del dominio (solo muestra el primer caracter y los asteriscos)
+    hidden_domain = domain[0] + "*" * (len(domain) - 1)
+    
+    # Reconstruir el correo electrónico oculto
+    hidden_email = hidden_username + "@" + hidden_domain
+    
+    return hidden_email
