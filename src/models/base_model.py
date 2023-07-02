@@ -7,5 +7,5 @@ from config.database import db
 
 class BaseModelClass(Timestamp, db.Model):
     __abstract__ = True
-    id = db.Column(UUIDType(binary=False), primary_key=True, default=uuid.uuid4)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     is_removed = db.Column(db.Boolean, nullable=False, default=False)
