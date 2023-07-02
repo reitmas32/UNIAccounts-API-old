@@ -34,6 +34,3 @@ EXPOSE 5000
 
 # Comando para ejecutar la aplicación Flask y especificar el archivo principal
 CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
-
-
-
