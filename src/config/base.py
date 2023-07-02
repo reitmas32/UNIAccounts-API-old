@@ -16,6 +16,7 @@ config = AutoConfig(search_path=PATH_FILE_ENV)
 
 ENVIRONMENT = config("ENVIRONMENT")
 SECRET_KEY_TOKEN = config("SECRET_KEY_TOKEN")
+API_KEY = config("API_KEY")
 API_KEYS = None
 API_VERSION = "v1"
 UNIACCOUNT_NAME = "uniaccount"
