@@ -13,3 +13,18 @@ class UsersModel(BaseModelClass):
     date_of_birth = db.Column(db.Date, nullable=False)
     password = db.Column(db.String(20), nullable=False)
     role = db.Column(db.String(20), nullable=False)
+
+    def toJSON(self):
+        return {
+            "name": self.name,
+            "last_name": self.last_name,
+            "email": self.email,
+            "user_name": self.user_name,
+            "phone_number": self.phone_number,
+            "date_of_birth": self.date_of_birth.strftime('%Y-%m-%d %H:%M:%S'),
+            "role": self.role,
+            "updated": self.updated.strftime('%Y-%m-%d %H:%M:%S'),
+            "created": self.created.strftime('%Y-%m-%d %H:%M:%S'),
+            "is_removed": self.is_removed,
+        }
+

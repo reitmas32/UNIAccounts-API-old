@@ -8,12 +8,14 @@ from api.v1.routers.user_services import views_user_services
 
 # Local Packages
 from api.v1.routers.users import views_users
+from api.v1.routers.service import views_services
 from config.database import db
 
 app = Flask(__name__)
 app.register_blueprint(views_users)
 app.register_blueprint(views_user_services)
 app.register_blueprint(views_core)
+app.register_blueprint(views_services)
 
 
 app.config["SQLALCHEMY_DATABASE_URI"] = CONFIG.SQLALCHEMY_DATABASE_URI

@@ -7,3 +7,5 @@ flask-migrate==4.0.4
 python-decouple==3.8
 pydantic==1.10.7
 pydantic[email]
+sqlalchemy-utils
+psycopg2>=2.8.6
