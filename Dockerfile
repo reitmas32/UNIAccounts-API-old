@@ -14,6 +14,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Definimos el puerto en el que se ejecutará la aplicación Flask
 EXPOSE 5000
 
+RUN flask db init || true
+
+RUN flask db migrate || true
+
+RUN flask db upgrade || true
+
 # Comando para ejecutar la aplicación Flask y especificar el archivo principal
 CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
 
