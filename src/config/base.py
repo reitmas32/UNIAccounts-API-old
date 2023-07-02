@@ -10,9 +10,9 @@ sys.path.extend(LIST_PATH_TO_ADD)
 
 
 # IMPORT ENVIRONMENT VARIABLES
-PATH_FILE_ENV = os.path.join(BASE_DIR, "config")
-config = AutoConfig(search_path=PATH_FILE_ENV)
-
+#PATH_FILE_ENV = os.path.join(BASE_DIR, "config")
+#config = AutoConfig(search_path=PATH_FILE_ENV)
+config = os.getenv
 
 ENVIRONMENT = config("ENVIRONMENT")
 SECRET_KEY_TOKEN = config("SECRET_KEY_TOKEN")
