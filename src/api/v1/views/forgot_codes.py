@@ -59,7 +59,7 @@ def forgot_password_POST(parameters_json: dict):
 
     response = {
         "Success": True,
-        "Message": 'send_email_response',
+        "Message": 'Successful the code was sent by mail',
         "Data": {
             "user_name": user_forgot_password_schema.user_name,
             "user_email": hideEmail(user_data.email)
@@ -85,7 +85,7 @@ def forgot_password_PUT(parameters_json: dict):
 
         response = {
             "Success": False,
-            "Message": "Data invalid for create user",
+            "Message": "Data invalid for reset password",
             "Data": {"errors": errors},
         }
         return response, HTTPStatus.BAD_REQUEST
@@ -115,7 +115,7 @@ def forgot_password_PUT(parameters_json: dict):
     except IntegrityError as e:
         response = {
             "Success": False,
-            "Message": "Error for Forgot Passwo",
+            "Message": "Error for Forgot Password",
             "Data": {"errors": str(e)},
         }
         return response, HTTPStatus.INTERNAL_SERVER_ERROR
