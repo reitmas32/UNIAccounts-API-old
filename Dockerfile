@@ -29,13 +29,9 @@ WORKDIR /app
 # Copiar los archivos de la aplicación a la imagen final
 COPY ./src /app
 
-RUN rm -r migrations
-
-RUN flask db init |
-
-RUN flask db migrate |
-
-RUN flask db upgrade |
+RUN flask db init || true && \
+    flask db migrate || true && \
+    flask db upgrade || true
 
 # Definir el puerto en el que se ejecutará la aplicación Flask
 EXPOSE 5000
