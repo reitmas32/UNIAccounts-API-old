@@ -7,12 +7,12 @@ from api.v1.routers.core import views_core
 from api.v1.routers.user_services import views_user_services
 
 # Local Packages
-from api.v1.routers.users import views_users
 from api.v1.routers.service import views_services
 from config.database import db
 
-app = Flask(__name__)
-app.register_blueprint(views_users)
+from config.router import app
+from config.api_docs import api
+import api.v1.routers.users
 app.register_blueprint(views_user_services)
 app.register_blueprint(views_core)
 app.register_blueprint(views_services)
