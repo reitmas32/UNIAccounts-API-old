@@ -14,6 +14,8 @@ from config.api_docs import api
 import api.v1.routers.users
 import api.v1.routers.service
 import api.v1.routers.validate_token
+import api.v1.routers.development.services
+import api.v1.routers.development.users
 app.register_blueprint(views_user_services)
 app.register_blueprint(views_core)
 
