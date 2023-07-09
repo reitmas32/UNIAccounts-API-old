@@ -5,6 +5,7 @@ from tools.functions_authentication import valid_headers
 
 from ..views.users import signup_route_POST
 from ..views.forgot_codes import forgot_password_POST, forgot_password_PUT
+from ..views.core import signin_route_PUT
 
     
 from flask_restx import Api, Resource, fields, Namespace
@@ -13,7 +14,8 @@ from flask import Blueprint, request
 from config.api_docs import api
 from api.v1.schemas.users import *
 
-signup_ns = Namespace('SignUp', description='Creacion de Cuentas', path='/api/v1/signup')
+signup_ns = Namespace('SignUp', description='SignUp Users', path='/api/v1/signup')
+signin_ns = Namespace('SignIn', description='Login Users', path='/api/v1/signin')
 forgot_password_ns = Namespace('ForgotPassword', description='Restablecimiento de Contraseña', path='/api/v1/forgot-password')
 
 @signup_ns.route('')
@@ -38,6 +40,27 @@ class SignUpResource(Resource):
             response = signup_route_POST(parameters_json=request.get_json())
             return response
         
+@signin_ns.route('')
+class SignInResource(Resource):
+    @api.doc(
+    responses={
+        201: 'Success signin, user create',
+        401: 'Not API_KEY Valid',
+        },
+    headers={'Api-Key': 'sEw7CMS03iJRI3EzVm1sYHfeqwQT6uZh', 'Service': 'uniaccounts'},
+    description='Login User in Service'
+    )
+    @api.marshal_with(signup_response_201, code=201)
+    @api.marshal_with(signup_response_401, code=401)
+    @api.expect(user_schema_input, validate=False)
+    def put(self):
+        response_credentials, status_code = valid_headers(request)
+        if not response_credentials.get("Success"):
+            return response_credentials, status_code
+
+        if request.method == "PUT":
+            response = signin_route_PUT(request=request)
+            return response
 
 @forgot_password_ns.route('')
 class ForgotPasswordResource(Resource):
@@ -93,4 +116,5 @@ class ForgotPasswordResource(Resource):
     
 # Agrega tus recursos a la API
 api.add_namespace(signup_ns)
+api.add_namespace(signin_ns)
 api.add_namespace(forgot_password_ns)
