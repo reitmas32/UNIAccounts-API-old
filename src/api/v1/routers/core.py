@@ -48,31 +48,6 @@ def signin():
         return response
 
 
-@views_core.route("/api/v1/validate_token", methods=["GET"])
-def validate_token():
-    """Validate JWT Route
-
-    Returns:
-        tuple: tuple of Dict and HTTP Code exmaple
-        {
-            "Data": {
-                .
-                .
-                .
-            },
-            "Message": "....",
-            "Success": true
-        }
-    """
-    response_credentials, status_code = valid_headers(request)
-    if not response_credentials.get("Success"):
-        return response_credentials, status_code
-
-    if request.method == "GET":
-        response = validate_token_route_GET(request=request)
-        return response
-
-
 @views_core.route("/test", methods=["GET"])
 def test():
     """Test Route
