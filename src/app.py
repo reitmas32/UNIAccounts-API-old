@@ -7,15 +7,14 @@ from api.v1.routers.core import views_core
 from api.v1.routers.user_services import views_user_services
 
 # Local Packages
-from api.v1.routers.service import views_services
 from config.database import db
 
 from config.router import app
 from config.api_docs import api
 import api.v1.routers.users
+import api.v1.routers.service
 app.register_blueprint(views_user_services)
 app.register_blueprint(views_core)
-app.register_blueprint(views_services)
 
 
 app.config["SQLALCHEMY_DATABASE_URI"] = CONFIG.SQLALCHEMY_DATABASE_URI
