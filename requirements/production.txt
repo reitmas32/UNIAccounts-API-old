@@ -25,3 +25,5 @@ SQLAlchemy-Utils==0.41.1
 typing_extensions==4.7.0
 urllib3==1.26.16
 Werkzeug==2.3.6
+flask_restx
+flask_swagger_ui
