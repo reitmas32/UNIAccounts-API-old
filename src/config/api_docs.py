@@ -3,7 +3,7 @@ from flask_restx import Api, Resource, fields
 from flask_swagger_ui import get_swaggerui_blueprint
 from flask import Blueprint, request
 
-api = Api(app, version='1.0', title='API Flask', description='API Flask')
+api = Api(app, version='1.0', title='UNIAccount API', description='API to Manage UNICA System Accounts', license='Apache 2.0',  prefix='/api/v1')
 
 # Configura la interfaz de usuario de Swagger
 SWAGGER_URL = '/docs/api/v1'
@@ -13,7 +13,7 @@ swagger_ui_blueprint = get_swaggerui_blueprint(
     SWAGGER_URL,
     API_URL,
     config={
-        'app_name': "API Flask"
+        'app_name': "UNIAccount API"
     }
 )
 app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
