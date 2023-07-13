@@ -29,7 +29,7 @@ API_KEY: 'sklndansd548488a4dajndbkabdbasd'
 
 ```json
 {
-  "message": "SignOut Successful",
+  "message": "SignOut Success",
   "status_code": 200
 }
 

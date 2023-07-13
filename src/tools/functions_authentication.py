@@ -45,14 +45,14 @@ def valid_API_KEY(service: str, api_key: str) -> bool:
     """
 
     ServicesService().get_services()
-    service_obj = CONFIG.API_KEYS.get(service)
+    service_obj = CONFIG.API_KEYS[service]
     if service_obj:
         return api_key == service_obj.api_key
     return False
 
 
 def valid_headers(_request):
-
+    print(_request.headers)
     is_valid_api_key = valid_API_KEY(
         service=_request.headers.get("Service"), api_key=_request.headers.get("Api-Key")
     )

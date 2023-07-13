@@ -9,13 +9,13 @@ validate_token_ns = Namespace('Validate Token', description='Validate JWT of Use
 
 validate_token_response_200 = api.model('validate_token.response.200', {
     'Data': fields.String(required=True, example=''),
-    'Successful': fields.Boolean(required=True, example=True),
+    'Success': fields.Boolean(required=True, example=True),
     'Message': fields.String(required=True, example='Success token'),
 })
 
 validate_token_response_401 = api.model('validate_token.response.401', {
   "Data": fields.Raw(required=True, example=[]),
-  "Successful": fields.Boolean(required=True, example=True),
+  "Success": fields.Boolean(required=True, example=True),
   "Message": fields.String(required=True, example='Not API_KEY Valid')
 }
 )

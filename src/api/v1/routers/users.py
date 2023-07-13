@@ -39,13 +39,13 @@ signup_response_201 = api.model('signup.respoonse.201', {
     'password': '',
     'role': 'admin',
 }),
-    'Successful': fields.Boolean(required=True, example=True),
-    'Message': fields.String(required=True, example='Successful Response'),
+    'Success': fields.Boolean(required=True, example=True),
+    'Message': fields.String(required=True, example='Success Response'),
 })
 
 signup_response_401 = api.model('signup.response.401', {
   "Data": fields.Raw(required=True, example={}),
-  "Successful": fields.Boolean(required=True, example=False),
+  "Success": fields.Boolean(required=True, example=False),
   "Message": fields.String(required=True, example='Not API_KEY Valid')
 }
 )
@@ -113,7 +113,7 @@ forgot_password_put_response_201 = api.model('forgot_password.response.201', {
     'date_of_birth': '11-01-2000',
     'role': 'admin',
 }),
-    'Successful': fields.Boolean(required=True, example=True),
+    'Success': fields.Boolean(required=True, example=True),
     'Message': fields.String(required=True, example='Success forgot Password'),
 })
 
@@ -126,14 +126,14 @@ forgot_password_put_response_400 = api.model('forgot_password.put.response.400',
 
 forgot_password_put_response_401 = api.model('forgot_password.put.response.401', {
   "Data": fields.Raw(required=True, example={}),
-  "Successful": fields.Boolean(required=True, example=False),
+  "Success": fields.Boolean(required=True, example=False),
   "Message": fields.String(required=True, example=fields.String(required=True, example='Not API_KEY Valid'))
 }
 )
 
 forgot_password_put_response_403 = api.model('forgot_password.put.response.403', {
   "Data": fields.Raw(required=True, example={}),
-  "Successful": fields.Boolean(required=True, example=False),
+  "Success": fields.Boolean(required=True, example=False),
   "Message": fields.String(required=True, example=fields.String(required=True, example='Error No previous request for password change was found.'))
 }
 )
@@ -153,7 +153,7 @@ user_forgot_passord_schema_input = api.model('UserForgotPasswordSchema', {
 
 forgot_password_post_response_201 = api.model('forgot_password.post.response.201', {
     "Success": fields.Boolean(required=True, example=True),
-        "Message": fields.String(required=True, example='Successful the code was sent by mail'),
+        "Message": fields.String(required=True, example='Success the code was sent by mail'),
         "Data": fields.Raw(required=True, example={
             "user_name": 'rafa_user_zam',
             "user_email": 'rafa@gmail.com',
@@ -169,7 +169,7 @@ forgot_password_post_response_400 = api.model('forgot_password.post.response.400
 
 forgot_password_post_response_401 = api.model('forgot_password.post.response.401', {
   #"Data": fields.Raw(required=True, example={}),
-  "Successful": fields.Boolean(required=True, example=False),
+  "Success": fields.Boolean(required=True, example=False),
   "Message": fields.String(required=True, example=fields.String(required=True, example='Not API_KEY Valid'))
 }
 )
@@ -185,7 +185,7 @@ forgot_password_post_response_500 = api.model('forgot_password.post.response.500
 class ForgotPasswordResource(Resource):
     @api.doc(
     responses={
-        201: 'Successful the code was sent by mail',
+        201: 'Success the code was sent by mail',
         400: 'Data invalid for create user',
         401: 'Not API_KEY Valid',
         500: 'Error for Forgot Password'

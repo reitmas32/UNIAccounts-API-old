@@ -15,13 +15,13 @@ service_ns = Namespace('Service', description='Services', path='/api/v1')
 
 register_service_response_201 = api.model('register_service.response.201', {
     'Data': fields.Raw(required=True, example='[...]'),
-    'Successful': fields.Boolean(required=True, example=True),
-    'Message': fields.String(required=True, example='Successful Response'),
+    'Success': fields.Boolean(required=True, example=True),
+    'Message': fields.String(required=True, example='Success Response'),
 })
 
 register_service_response_401 = api.model('register_service.response.401', {
   "Data": fields.Raw(required=True, example=[]),
-  "Successful": fields.Boolean(required=True, example=True),
+  "Success": fields.Boolean(required=True, example=True),
   "Message": fields.String(required=True, example='Not API_KEY Valid')
 }
 )

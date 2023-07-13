@@ -59,7 +59,7 @@ def forgot_password_POST(parameters_json: dict):
 
     response = {
         "Success": True,
-        "Message": 'Successful the code was sent by mail',
+        "Message": 'Success the code was sent by mail',
         "Data": {
             "user_name": user_forgot_password_schema.user_name,
             "user_email": hideEmail(user_data.email)

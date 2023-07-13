@@ -11,7 +11,7 @@ def generate_markdown(config: dict, this_dir: str, version_api: str):
                 data += file.read() + "\n"
         with open(f"{this_dir}/docs/api_{version_api}.md", "w") as file:
             file.write(data)
-        print("Successful Generate API Docs")
+        print("Success Generate API Docs")
     except ValueError as e:
         print(e)
         print("Error Generate API Docs")

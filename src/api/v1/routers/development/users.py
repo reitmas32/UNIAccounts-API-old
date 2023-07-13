@@ -11,13 +11,13 @@ development = Namespace('Development', description='Services', path='/api/v1/dev
 
 development_users_response_200 = api.model('development.users.get.response.200', {
     'Data': fields.Raw(required=True, example='[...]'),
-    'Successful': fields.Boolean(required=True, example=True),
+    'Success': fields.Boolean(required=True, example=True),
     'Message': fields.String(required=True, example='Success Get Services'),
 })
 
 development_users_response_400 = api.model('development.users.get.response.400', {
   "Data": fields.Raw(required=True, example=[]),
-  "Successful": fields.Boolean(required=True, example=False),
+  "Success": fields.Boolean(required=True, example=False),
   "Message": fields.String(required=True, example='Not API_KEY Valid')
 }
 )
