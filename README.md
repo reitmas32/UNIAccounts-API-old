@@ -1,5 +1,7 @@
 # UNIAccounts - Sistema Gestor de Cuentas
 
+![Logo de mi proyecto](https://raw.githubusercontent.com/reitmas32/UNIAccounts-API-old/main/logo-uniaccounts.png)
+
 Bienvenido/a al proyecto UNIAccounts, un Sistema Gestor de Cuentas desarrollado por UNIHacks.
 
 ## Descripción
